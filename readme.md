@@ -1,0 +1,1 @@
+Redux simple starter
