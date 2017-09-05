@@ -34,20 +34,6 @@ const webpackConfig = {
         // },
       },
 
-      {
-        test: /\.html$/,
-
-        use: [
-          // apply multiple loaders and options
-          "htmllint-loader",
-          {
-            loader: "html-loader",
-            options: {
-              /* ... */
-            }
-          }
-        ]
-      },
     ],
   },
   resolve: {
