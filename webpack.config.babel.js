@@ -21,7 +21,7 @@ const webpackConfig = {
     rules: [
       // rules for modules (configure loaders, parser options, etc.)
       {
-        test: /\.js?$/,
+        test: /\.jsx?$/,
         include: [
           path.resolve(__dirname, './src/')
         ],
