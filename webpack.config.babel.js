@@ -41,7 +41,6 @@ const webpackConfig = {
     // extensions that are used
   },
   devtool: 'cheap-source-map',
-  context: __dirname, // string (absolute path!)
 
   devServer: {
     proxy: { // proxy URLs to backend development server
