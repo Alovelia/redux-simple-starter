@@ -2,6 +2,7 @@
   "presets": ["env", "react", "stage-0"],
   "plugins": [
     "add-module-exports",
+    "transform-promise-to-bluebird",
     "transform-decorators-legacy"
   ]
 }
