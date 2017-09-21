@@ -4,9 +4,10 @@
   "description": "React Redux starter with all the latest babel features",
   "main": "index.js",
   "scripts": {
+    "start": "node scripts/start.js",
     "test": "node scripts/test.js --env=jsdom",
     "#start": "webpack-dev-server --hot --inline --config webpack.config.babel.js",
-    "start": "node scripts/start.js"
+    "build": "node scripts/build.js"
   },
   "repository": {
     "type": "git",
