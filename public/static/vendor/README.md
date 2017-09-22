@@ -1,0 +1,1 @@
+This folder as a temporary place for vendor scripts

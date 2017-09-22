@@ -4,6 +4,7 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
@@ -11,6 +12,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
+const vendorManifest = require('../public/static/vendor/vendor-manifest.json');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -44,6 +46,7 @@ module.exports = {
     // require.resolve('webpack-dev-server/client') + '?/',
     // require.resolve('webpack/hot/dev-server'),
     require.resolve('react-dev-utils/webpackHotDevClient'),
+    // path.resolve(`vendor/${require('../vendor/vendor-manifest.json').name}.js`),
     // Finally, this is your app's code:
     paths.appIndexJs,
     // We include the app code last so that if there is a runtime error during
@@ -216,6 +219,11 @@ module.exports = {
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     // In development, this will be an empty string.
     new InterpolateHtmlPlugin(env.raw),
+    // It will inject vendor.js script to index.html before app bundle.
+    new HtmlWebpackIncludeAssetsPlugin({
+      assets: [`static/vendor/${require('../public/static/vendor/vendor-manifest.json').name}.js`],
+      append: false,
+    }),
     // Generates an `index.html` file with the <script> injected.
     new HtmlWebpackPlugin({
       inject: true,
@@ -243,6 +251,12 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    // https://github.com/moment/moment/issues/2517#issuecomment-185836313
+    // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|ru/),
+    new webpack.DllReferencePlugin({
+      context: '.',
+      manifest: vendorManifest
+    }),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

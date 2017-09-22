@@ -8,6 +8,7 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 
@@ -250,6 +251,11 @@ module.exports = {
         minifyURLs: true,
       },
     }),
+    // It will inject vendor.js script to index.html before app bundle.
+    new HtmlWebpackIncludeAssetsPlugin({
+      assets: [`static/vendor/${require('../public/static/vendor/vendor-manifest.json').name}.js`],
+      append: false,
+    }),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
     // It is absolutely essential that NODE_ENV was set to production here.
@@ -319,6 +325,13 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    // https://github.com/moment/moment/issues/2517#issuecomment-185836313
+    // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|ru/),
+    // It will use vendor-manifest to build relations between bundle and vendor.js bundle
+    new webpack.DllReferencePlugin({
+      context: '.',
+      manifest: require('../public/static/vendor/vendor-manifest.json')
+    }),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

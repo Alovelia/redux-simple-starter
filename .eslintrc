@@ -28,5 +28,10 @@
     "ecmaFeatures": {
       "spread": true
     }
+  },
+  "globals": {
+    "global": true,
+    "document": true,
+    "window": true
   }
 }

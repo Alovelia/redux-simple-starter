@@ -107,3 +107,6 @@ fabric.properties
 .idea
 /dist
 /build
+# ignore vendor bundle and vendor-manifest
+**/vendor/*.js
+**/vendor/*.json
