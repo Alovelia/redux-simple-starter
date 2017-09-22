@@ -1,8 +1,35 @@
 {
   "presets": ["env", "react", "stage-0"],
-  "plugins": [
-    "add-module-exports",
-    "transform-promise-to-bluebird",
-    "transform-decorators-legacy"
-  ]
+  "env": {
+    "production": {
+      "only": [
+        "app"
+      ],
+      "plugins": [
+        "transform-react-remove-prop-types",
+        "transform-react-constant-elements",
+        "transform-react-inline-elements",
+        "transform-promise-to-bluebird",
+        "transform-es2015-modules-commonjs",
+        "transform-decorators-legacy",
+        "dynamic-import-node"
+      ]
+    },
+    "development": {
+      "plugins": [
+        "transform-promise-to-bluebird",
+        "transform-es2015-modules-commonjs",
+        "transform-decorators-legacy",
+        "dynamic-import-node"
+      ]
+    },
+    "test": {
+      "plugins": [
+        "transform-promise-to-bluebird",
+        "transform-es2015-modules-commonjs",
+        "transform-decorators-legacy",
+        "dynamic-import-node"
+      ]
+    }
+  }
 }
