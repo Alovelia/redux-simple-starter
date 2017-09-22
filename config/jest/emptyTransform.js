@@ -5,8 +5,8 @@ module.exports = {
   process() {
     return 'module.exports = {};';
   },
-  getCacheKey() {
+  getCacheKey(fileData, filename) {
     // The output is always the same.
-    return 'cssTransform';
+    return 'emptyTransform';
   },
 };

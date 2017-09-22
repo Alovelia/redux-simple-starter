@@ -1,0 +1,39 @@
+{
+  "rootDir": "../../",
+  "roots": ["<rootDir>/src"],
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "**/*.{js,jsx}",
+    "!**/node_modules/**",
+    "!**/vendor/**",
+    "!**/src/index.js",
+    "!**/src/registerServiceWorker.js"
+  ],
+  "coverageDirectory": "<rootDir>/coverage",
+  "testPathIgnorePatterns": [
+    "<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]"
+  ],
+  "testMatch": [
+    "<rootDir>/src/**/__tests__/**/*.js?(x)",
+    "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
+  ],
+  "testEnvironment": "jsdom",
+  "transform": {
+    "^.+\\.(js|jsx)$": "babel-jest",
+    "^.*\\.(css|less|styl|scss|sass)$": "<rootDir>/config/jest/cssTransform.js",
+    "^.*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/fileTransform.js",
+    "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js",
+    "^.*[.](jpg|JPG|gif|GIF|png|PNG|less|LESS)$": "<rootDir>/config/jest/emptyTransform.js"
+  },
+  "transformIgnorePatterns": [
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+  ],
+  "unmockedModulePathPatterns": [
+    "react",
+    "react-dom",
+    "react-addons-test-utils"
+  ],
+  "moduleNameMapper": {
+    "^react-native$": "react-native-web"
+  }
+}
