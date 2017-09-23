@@ -2,7 +2,8 @@
   "rootDir": "../../",
   "roots": ["<rootDir>/src"],
   "testPathIgnorePatterns": [
-    "<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]"
+    "<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]",
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
   ],
   "testMatch": [
     "<rootDir>/src/**/__tests__/**/*.js?(x)",
@@ -16,9 +17,6 @@
     "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js",
     "^.*[.](jpg|JPG|gif|GIF|png|PNG|less|LESS)$": "<rootDir>/config/jest/emptyTransform.js"
   },
-  "transformIgnorePatterns": [
-    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-  ],
   "unmockedModulePathPatterns": [
     "react",
     "react-dom",

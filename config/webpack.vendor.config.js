@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const packageJSON = require('../package.json');
 const path = require('path');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -13,6 +14,12 @@ module.exports = {
     library: '[name]_[hash]'
   },
   plugins: [
+    new CleanWebpackPlugin([
+      '*.json',
+      '*.js'
+    ], {
+      root: path.resolve(__dirname, '../public/static/vendor')
+    }),
     new webpack.DllPlugin({
       path: 'public/static/vendor/[name]-manifest.json',
       name: '[name]_[hash]'
@@ -36,7 +43,8 @@ module.exports = {
     //   },
     // }),
     process.env.NODE_ENV !== 'production'
-      ? () => {}
+      ? () => {
+      }
       : new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false,

@@ -7,11 +7,13 @@
     "!**/node_modules/**",
     "!**/vendor/**",
     "!**/src/index.js",
-    "!**/src/registerServiceWorker.js"
+    "!**/src/registerServiceWorker.js",
+    "!**/__mock_tests__/**"
   ],
   "coverageDirectory": "<rootDir>/coverage",
   "testPathIgnorePatterns": [
-    "<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]"
+    "<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]",
+    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
   ],
   "testMatch": [
     "<rootDir>/src/**/__tests__/**/*.js?(x)",
@@ -25,9 +27,6 @@
     "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js",
     "^.*[.](jpg|JPG|gif|GIF|png|PNG|less|LESS)$": "<rootDir>/config/jest/emptyTransform.js"
   },
-  "transformIgnorePatterns": [
-    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-  ],
   "unmockedModulePathPatterns": [
     "react",
     "react-dom",
