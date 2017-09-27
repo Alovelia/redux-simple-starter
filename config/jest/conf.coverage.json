@@ -1,4 +1,8 @@
 {
+  "setupFiles": [
+    "<rootDir>/config/jest/polyfills.js",
+    "<rootDir>/config/jest/enzymeAdapter.js"
+  ],
   "rootDir": "../../",
   "roots": ["<rootDir>/src"],
   "collectCoverage": true,
@@ -8,11 +12,13 @@
     "!**/vendor/**",
     "!**/src/index.js",
     "!**/src/registerServiceWorker.js",
-    "!**/__mock_tests__/**"
+    "!**/__mock_tests__/**",
+    "!**/config/jest/polyfills.js",
+    "!**/config/jest/enzymeAdapter.js"
   ],
   "coverageDirectory": "<rootDir>/coverage",
   "testPathIgnorePatterns": [
-    "<rootDir>[/\\\\](build|docs|node_modules)[/\\\\]",
+    "<rootDir>[/\\\\](build|docs|node_modules|config)[/\\\\]",
     "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
   ],
   "testMatch": [

@@ -1,4 +1,8 @@
 {
+  "setupFiles": [
+    "<rootDir>/config/jest/polyfills.js",
+    "<rootDir>/config/jest/enzymeAdapter.js"
+  ],
   "rootDir": "../../",
   "roots": ["<rootDir>/src"],
   "testPathIgnorePatterns": [
