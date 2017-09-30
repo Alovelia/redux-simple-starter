@@ -4,7 +4,6 @@
   "description": "React Redux starter with all the latest babel features",
   "main": "index.js",
   "scripts": {
-    "prestart": "yarn prebuild",
     "start": "node scripts/start.js",
     "prebuild": "webpack --config ./config/webpack.vendor.config.js",
     "build": "node scripts/build.js",

@@ -2,9 +2,6 @@
   "presets": ["env", "react", "stage-0"],
   "env": {
     "production": {
-      "only": [
-        "app"
-      ],
       "plugins": [
         "transform-react-remove-prop-types",
         "transform-react-constant-elements",
