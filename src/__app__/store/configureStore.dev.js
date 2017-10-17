@@ -15,7 +15,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // import { routerMiddleware } from 'react-router-redux';
 
 import rootReducer from '../reducers';
-import _ from '../../__common__/helpers';
 
 const composeEnhancers = composeWithDevTools({
   // Specify name here, actionsBlacklist, actionsCreators and other options if needed

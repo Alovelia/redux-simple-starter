@@ -44,6 +44,7 @@ module.exports = {
     // the line below with these two lines if you prefer the stock client:
     // require.resolve('webpack-dev-server/client') + '?/',
     // require.resolve('webpack/hot/dev-server'),
+    'react-hot-loader/patch',
     require.resolve('react-dev-utils/webpackHotDevClient'),
     // path.resolve(`vendor/${require('../vendor/vendor-manifest.json').name}.js`),
     // Finally, this is your app's code:
