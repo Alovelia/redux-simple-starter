@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    throw new ApiError();
+    Promise.reject(new ApiError());
   }
   render() {
     return (<div>

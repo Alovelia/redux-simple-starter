@@ -1,4 +1,7 @@
 import ExtendableError from 'es6-error';
+import StackTrace from 'stacktrace-js';
+
+/* eslint-disable no-console */
 /*
 * @description
 * https://medium.com/@xjamundx/custom-javascript-errors-in-es6-aa891b173f87
@@ -32,7 +35,7 @@ export function listenGlobalPromiseRejections() {
       console.groupEnd();
     });
 
-    window.addEventListener('rejectionhandled', (event) => {
+    window.addEventListener('rejectionhandled', () => {
       console.log('%cRejection Handled', 'color:grey');
     });
   }
@@ -52,19 +55,32 @@ export function listenGlobalPromiseRejections() {
 * */
 export function listenGlobalExceptions() {
   if (typeof window === 'object') {
-    window.onerror = function (msg, url, lineNo, columnNo, error) {
-      let string = msg.toLowerCase();
-      let substring = 'script error';
-      if (string.indexOf(substring) > -1) {
-        console.log('%cScript Error: See Browser Console for Detail', 'color:red');
-      } else {
-        console.groupCollapsed('%cError', 'color:red');
-        console.log(`%cMessage: ${msg}`.padEnd(16), 'color:red');
-        console.log(`%cUrl: ${url}:${lineNo}:${columnNo}`.padEnd(16), 'color:red');
-        console.error(error.stack);
-        console.groupEnd();
+    window.onerror = (msg, url, lineNo, columnNo, error) => {
+
+      if (process.env.NODE_ENV === 'production') {
+        // https://www.stacktracejs.com/#!/docs/stacktrace-js
+        StackTrace.fromError(error).then((stackframes) => {
+          StackTrace.report(stackframes, '/errorlog', 'error message')
+            .catch(() => {
+              // console.log('EPIC FAIL');
+            });
+        }).catch(() => {
+          // console.log('EPIC FAIL', err);
+        });
+
+        let string = msg.toLowerCase();
+        let substring = 'script error';
+        if (string.indexOf(substring) > -1) {
+          console.log('%cScript Error: See Console for Detail', 'color:red');
+        } else {
+          console.groupCollapsed('%cError', 'color:red');
+          console.log(`%cMessage: ${msg}`.padEnd(16), 'color:red');
+          console.log(`%cUrl: ${url}:${lineNo}:${columnNo}`.padEnd(16), 'color:red');
+          console.error(error.stack);
+          console.groupEnd();
+        }
+        return false;
       }
-      return false;
     };
   }
 }
