@@ -4,20 +4,23 @@
   "description": "React Redux starter with all the latest babel features",
   "main": "index.js",
   "scripts": {
-    "start": "node scripts/start.js",
+    "build": "run-s _test:coverage _build",
     "prebuild": "webpack --config ./config/webpack.vendor.config.js",
-    "build": "node scripts/build.js",
+    "start": "node scripts/start.js",
     "test": "node scripts/test.js --config=config/jest/conf.json",
-    "test:prod": "cross-env CI=true node scripts/test.js --config=config/jest/conf.json",
-    "coverage": "run-s ___coverage:clean ___coverage:build",
+    "test:snapshot": "jest --config=config/jest/conf.json --updateSnapshot",
+    "_build": "node scripts/build.js",
     "_build:open": "npm-run-all build -p ___build:serve ___build:browser",
-    "_coverage:open": "npm-run-all coverage -p ___coverage:serve ___coverage:browser",
-    "___coverage:build": "cross-env CI=true node scripts/test.js --config=config/jest/conf.coverage.json",
-    "___coverage:clean": "rimraf coverage",
-    "___build:serve": "pushstate-server build 7001",
+    "_coverage": "run-s ___coverage:clean ___coverage:build",
+    "_coverage:open": "npm-run-all _coverage -p ___coverage:serve ___coverage:browser",
+    "_test:coverage": "run-s coverage",
+    "_test:nocoverage": "cross-env CI=true node scripts/test.js --config=config/jest/conf.json",
     "___build:browser": "opn http://localhost:7001",
-    "___coverage:serve": "pushstate-server coverage/lcov-report 7000",
-    "___coverage:browser": "opn http://localhost:7000"
+    "___build:serve": "pushstate-server build 7001",
+    "___coverage:build": "cross-env CI=true node scripts/test.js --config=config/jest/conf.coverage.json",
+    "___coverage:browser": "opn http://localhost:7000",
+    "___coverage:clean": "rimraf coverage",
+    "___coverage:serve": "pushstate-server coverage/lcov-report 7000"
   },
   "repository": {
     "type": "git",
@@ -29,7 +32,7 @@
     "babel",
     "esnext"
   ],
-  "author": "Margarita Yudina",
+  "author": "Roman Yudin | Margarita Yudina",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Alovelia/redux-simple-starter/issues"
@@ -100,10 +103,13 @@
     "ramda": "^0.25.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-intl": "^2.4.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
+    "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
+    "reselect": "^3.0.1",
     "stacktrace-js": "^2.0.0"
   }
 }

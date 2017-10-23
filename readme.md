@@ -5,3 +5,7 @@ Redux simple starter
 It will prebuild all external libraries to dll dependencies
 and `yarn start` will work faster.
 When you update libraries you can repeat this command.
+
+`yarn test:snapshot` - to create snapshots for your components.
+You should run this component only if you sure that your work is stable
+and could be fixed in snapshots.
