@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { fromJS } from 'immutable';
 // import { persistState } from 'redux-devtools';
 // import DevTools from '../containers/DevTools';
 // import { loadState, saveState } from '/common/local-storage-module';
@@ -42,7 +43,7 @@ export default function configureStore(initialState) {
     // see how implement it as middleware
     // https://github.com/elgerlambert/redux-localstorage/blob/master/src/persistState.js
     // ,loadState() || initialState // load from localStorage
-    initialState,
+    fromJS(initialState),
     enhancer,
   );
 

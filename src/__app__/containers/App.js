@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+/* react-intl imports */
+import { FormattedMessage } from 'react-intl';
 import Child from './Child';
 import { ApiError } from '../../__common__/ErrorHander';
 
-
+// console.info(global);
+/* eslint-disable */
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,10 +18,11 @@ class App extends Component {
     return (<div>
       <button onClick={() => {
         this.setState({ updated: true });
-        // this.props.trigger();
+        this.props.trigger();
       }}
-      >1Click ME PLEASE21!</button>
-      end122413222
+      >1Click ME 1!</button>
+      end122413222z1asdasasdasd12312
+      <FormattedMessage id="app.welcome" />
       <Child />
     </div>);
   }
@@ -26,6 +30,6 @@ class App extends Component {
 
 export default compose(
   connect(() => ({}), {
-    trigger: () => ({ type: 'EVENT1343' })
+    trigger: () => ({ type: 'EVENT' })
   })
 )(App);

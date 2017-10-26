@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "run-s _test:coverage _build",
+    "eslint:debug": "eslint --debug ./src/index.js",
     "prebuild": "webpack --config ./config/webpack.vendor.config.js",
     "start": "node scripts/start.js",
     "test": "node scripts/test.js --config=config/jest/conf.json",
@@ -66,6 +67,8 @@
     "enzyme-adapter-react-16": "^1.0.0",
     "eslint": "^4.7.2",
     "eslint-config-airbnb": "^15.1.0",
+    "eslint-import-resolver-alias": "^1.0.3",
+    "eslint-import-resolver-webpack": "^0.8.3",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-babel": "^4.1.2",
     "eslint-plugin-import": "^2.7.0",
@@ -98,6 +101,7 @@
     "axios": "^0.16.2",
     "bluebird": "^3.5.0",
     "es6-error": "^4.0.2",
+    "immutable": "^3.8.2",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "ramda": "^0.25.0",
@@ -106,9 +110,11 @@
     "react-intl": "^2.4.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
+    "react-router-redux": "^4.0.8",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
+    "redux-immutable": "^4.0.0",
     "reselect": "^3.0.1",
     "stacktrace-js": "^2.0.0"
   }
