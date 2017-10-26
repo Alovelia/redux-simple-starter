@@ -10,7 +10,7 @@ import { handleGlobalErrors } from 'common/ErrorHander';
 
 // Import root app
 import Root from './containers/Root';
-import Home from './containers/App';
+import Layout from './containers/Layout';
 
 // Import routes
 import createRoutes from './routes';
@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'development') {
 
 /* eslint-disable */
 import configureStore from './store/configureStore';
-// import routes from '../routes';
+import routes from './routes';
 
 
 handleGlobalErrors();
@@ -37,6 +37,7 @@ handleGlobalErrors();
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
 const store = configureStore(initialState, browserHistory);
+// const store = configureStore(initialState);
 
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState
@@ -47,10 +48,9 @@ const history = syncHistoryWithStore(browserHistory, store, {
 
 // Set up the router, wrapping all Routes in the App component
 const rootRoute = {
-  component: Home,
+  component: Layout,
   childRoutes: createRoutes(store),
 };
-
 
 const renderApp = (App) => {
   render(
@@ -58,6 +58,7 @@ const renderApp = (App) => {
       store={store}
       history={history}
       rootRoute={rootRoute}
+      layout={Layout}
     />,
     document.getElementById('root')
   );

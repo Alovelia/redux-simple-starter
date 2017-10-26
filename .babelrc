@@ -9,8 +9,7 @@
         "transform-react-pure-class-to-function",
         "transform-promise-to-bluebird",
         "transform-es2015-modules-commonjs",
-        "transform-decorators-legacy",
-        "dynamic-import-node"
+        "transform-decorators-legacy"
       ]
     },
     "development": {
@@ -18,7 +17,6 @@
         "transform-promise-to-bluebird",
         "transform-es2015-modules-commonjs",
         "transform-decorators-legacy",
-        "dynamic-import-node",
         "react-hot-loader/babel"
       ]
     },

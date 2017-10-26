@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { routerMiddleware } from 'react-router-redux';
 import { fromJS } from 'immutable';
 // import { persistState } from 'redux-devtools';
 // import DevTools from '../containers/DevTools';
@@ -15,36 +16,40 @@ import { fromJS } from 'immutable';
 // import { browserHistory, hashHistory } from 'react-router'; // eslint-disable-line no-unused-vars
 // import { routerMiddleware } from 'react-router-redux';
 
-import rootReducer from '../reducers';
+import createReducer from '../reducers';
 
-const composeEnhancers = composeWithDevTools({
-  // Specify name here, actionsBlacklist, actionsCreators and other options if needed
-});
+export default function configureStore(initialState = {}, history) {
+  // Create the store with two middlewares
+  // 1. sagaMiddleware: Makes redux-sagas work
+  // 2. routerMiddleware: Syncs the location/URL path to the state
+  const middlewares = [
+    // sagaMiddleware,
+    routerMiddleware(history),
+  ];
 
-const enhancer = composeEnhancers(
-  applyMiddleware(
-    //--------------------redux router
-    // routerMiddleware(browserHistory)
-    // , sagaMiddleware
-  )
-  // , DevTools.instrument()
-  // , persistState(
-  //   window.location.href.match(
-  //     /[?&]debug_session=([^&#]+)\b/
-  //   )
-  // )
-  // ,window.devToolsExtension ? window.devToolsExtension() : f => f
-);
+  const composeEnhancers = composeWithDevTools({
+    // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+  });
 
-export default function configureStore(initialState) {
+  const enhancers = [
+    applyMiddleware(...middlewares),
+    // , DevTools.instrument()
+    // , persistState(
+    //   window.location.href.match(
+    //     /[?&]debug_session=([^&#]+)\b/
+    //   )
+    // )
+    // ,window.devToolsExtension ? window.devToolsExtension() : f => f
+  ];
+
   const store = createStore(
-    rootReducer,
+    createReducer(),
     // such method can be used only here not in enhancer
     // see how implement it as middleware
     // https://github.com/elgerlambert/redux-localstorage/blob/master/src/persistState.js
-    // ,loadState() || initialState // load from localStorage
+    // loadState() || initialState // load from localStorage
     fromJS(initialState),
-    enhancer,
+    composeEnhancers(...enhancers)
   );
 
   // substribe localStorage save method to state change event
@@ -56,11 +61,20 @@ export default function configureStore(initialState) {
   //run saga
   // sagaMiddleware.run(sagas);
 
+  // Extensions
+  // store.runSaga = sagaMiddleware.run;
+  store.asyncReducers = {}; // Async reducer registry
+
+  // Make reducers hot reloadable, see http://mxs.is/googmo
   if (module.hot) {
-    /* eslint-disable global-require */
-    module.hot.accept('../reducers', () =>
-      store.replaceReducer(require('../reducers').default)
-    );
+    module.hot.accept('../reducers', () => {
+      import('../reducers').then((reducerModule) => {
+        const createReducers = reducerModule.default;
+        const nextReducers = createReducers(store.asyncReducers);
+
+        store.replaceReducer(nextReducers);
+      });
+    });
   }
 
   return store;

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
+import { Router } from 'react-router';
 /* react-intl imports */
 import { IntlProvider } from 'react-intl';
 import { AppContainer } from 'react-hot-loader';
-import Home from './App';
 
 //DEV TOOLS
 // import DevTools from './DevTools';
@@ -15,11 +15,10 @@ const Root = ({ store, history, rootRoute }) => {
     <AppContainer>
       <Provider store={store} >
         <IntlProvider locale={'en'} messages={require('../i18n/en.json')}>
-          <Router
-            history={history}
-            routes={rootRoute}
-          />
-          <Home />
+            <Router
+              history={history}
+              routes={rootRoute}
+            />
         </IntlProvider>
         {/*<LanguageProvider messages={messages}>*/}
           {/*<Router*/}
