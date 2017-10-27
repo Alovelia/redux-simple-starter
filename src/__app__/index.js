@@ -73,6 +73,12 @@ if (module.hot) {
     renderApp(NextRoot);
   });
 
+  module.hot.accept('./routes', () => {
+    /* eslint-disable */
+    const NextRoot = require('./containers/Root').default;
+    renderApp(NextRoot);
+  });
+
   // TODO think up what should be updated
   // // modules.hot.accept does not accept dynamic dependencies,
   // // have to be constants at compile-time

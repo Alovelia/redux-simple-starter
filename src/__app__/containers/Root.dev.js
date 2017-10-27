@@ -6,6 +6,7 @@ import { Router } from 'react-router';
 import { IntlProvider } from 'react-intl';
 import { AppContainer } from 'react-hot-loader';
 
+import Home from './Home';
 //DEV TOOLS
 // import DevTools from './DevTools';
 
@@ -19,6 +20,7 @@ const Root = ({ store, history, rootRoute }) => {
               history={history}
               routes={rootRoute}
             />
+            {/*<Home />*/}
         </IntlProvider>
         {/*<LanguageProvider messages={messages}>*/}
           {/*<Router*/}
