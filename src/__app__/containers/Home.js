@@ -21,7 +21,7 @@ class App extends Component {
         this.props.trigger();
       }}
       >1Click ME 1!</button>
-      end
+      endasdasdasdasdasd
       <FormattedMessage id="app.welcome" />
       <Child />
     </div>);

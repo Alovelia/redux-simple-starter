@@ -11,6 +11,7 @@
     "!**/node_modules/**",
     "!**/vendor/**",
     "!**/src/index.js",
+    "!**/src/__app__/store.js",
     "!**/src/registerServiceWorker.js",
     "!**/__mock_tests__/**",
     "!**/config/jest/polyfills.js",

@@ -1,5 +1,14 @@
 import { createStore, applyMiddleware } from 'redux';
+/* eslint-disable no-redeclare */
+// #if process.env.NODE_ENV === 'development'
+/* istanbul ignore next */
 import { composeWithDevTools } from 'redux-devtools-extension';
+// #endif
+// #if process.env.NODE_ENV !== 'development'
+/* istanbul ignore next */
+import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
+// #endif
+/* eslint-enable no-redeclare */
 import { routerMiddleware } from 'react-router-redux';
 import { fromJS } from 'immutable';
 // import { persistState } from 'redux-devtools';
@@ -16,7 +25,7 @@ import { fromJS } from 'immutable';
 // import { browserHistory, hashHistory } from 'react-router'; // eslint-disable-line no-unused-vars
 // import { routerMiddleware } from 'react-router-redux';
 
-import createReducer from '../reducers';
+import createReducer from './reducers';
 
 export default function configureStore(initialState = {}, history) {
   // Create the store with two middlewares
@@ -67,8 +76,8 @@ export default function configureStore(initialState = {}, history) {
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      import('../reducers').then((reducerModule) => {
+    module.hot.accept('./reducers', () => {
+      import('./reducers').then((reducerModule) => {
         const createReducers = reducerModule.default;
         const nextReducers = createReducers(store.asyncReducers);
 

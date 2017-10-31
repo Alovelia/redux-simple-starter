@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { applyRouterMiddleware, browserHistory } from 'react-router';
+// import { browserHistory, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 // Import error handlers
 import { handleGlobalErrors } from 'common/ErrorHander';
@@ -26,9 +27,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 /* eslint-disable */
-import configureStore from './store/configureStore';
-import routes from './routes';
-
+import configureStore from './store';
 
 handleGlobalErrors();
 // Create redux store with history

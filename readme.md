@@ -12,3 +12,13 @@ and could be fixed in snapshots.
 
 2. To enable webstorm see aliases from webpack go to settings search for
 webpack and add config file from ./config/webpack.config.dev.js.
+
+3. [webpack-conditional-loader](https://github.com/caiogondim/webpack-conditional-loader)
+
+It's even more then Webpack.DefinePlugin.
+It could be placed anywhere
+```
+//#if process.env.NODE_ENV === 'development'
+  component: require('./containers/Home').default
+// #endif
+```

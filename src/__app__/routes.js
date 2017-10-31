@@ -20,11 +20,6 @@ export default function createRoutes(store) {
     {
       path: '/',
       name: 'home',
-      //   /* eslint-disable */
-      //   // #if process.env.NODE_ENV === 'development'
-      //   component: require('./containers/Home').default
-      //   // #endif
-      // }
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           // import('containers/HomePage/reducer'),
