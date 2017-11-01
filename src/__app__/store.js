@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware } from 'redux';
 /* eslint-disable no-redeclare */
 // #if process.env.NODE_ENV === 'development'
-/* istanbul ignore next */
 import { composeWithDevTools } from 'redux-devtools-extension';
 // #endif
 // #if process.env.NODE_ENV !== 'development'
-/* istanbul ignore next */
+// using dev-tools in production
+// https://medium.com/@zalmoxis/using-redux-devtools-in-production-4c5b56c5600f
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 // #endif
 /* eslint-enable no-redeclare */
