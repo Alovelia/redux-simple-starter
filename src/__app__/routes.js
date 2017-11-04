@@ -9,7 +9,7 @@ const errorLoading = (err) => {
 };
 
 const loadModule = cb => (componentModule) => {
-  cb(null, componentModule.default);
+  cb(null, componentModule);
 };
 
 export default function createRoutes(store) {
@@ -24,7 +24,7 @@ export default function createRoutes(store) {
         const importModules = Promise.all([
           // import('containers/HomePage/reducer'),
           // import('containers/HomePage/sagas'),
-          import('./containers/Home'),
+          import('./containers/home'),
         ]);
 
         const renderRoute = loadModule(cb);

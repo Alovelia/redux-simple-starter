@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 /* react-intl imports */
 import { FormattedMessage } from 'react-intl';
-import Child from './Child';
-import { ApiError } from '../../__common__/ErrorHander';
+import { ApiError } from 'common/ErrorHander';
+import Child from './child';
 
 // console.info(global);
 /* eslint-disable */
@@ -20,8 +20,8 @@ class App extends Component {
         this.setState({ updated: true });
         this.props.trigger();
       }}
-      >1Click ME 1!</button>
-      endasdasdasdasdasd
+      >1Click ME 1 asd!</button>asdasdasd
+      endasdasdasdsd
       <FormattedMessage id="app.welcome" />
       <Child />
     </div>);

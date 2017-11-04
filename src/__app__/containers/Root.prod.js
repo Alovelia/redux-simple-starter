@@ -5,7 +5,7 @@ import { Router } from 'react-router';
 /* react-intl imports */
 import { IntlProvider } from 'react-intl';
 
-import Home from './Home';
+import Home from './home';
 
 /*eslint-disable*/
 const Root = ({ store, history, rootRoute }) => {

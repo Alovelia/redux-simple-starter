@@ -3,17 +3,20 @@
   "env": {
     "production": {
       "plugins": [
+        "add-module-exports",
         "transform-react-constant-elements",
         "transform-react-inline-elements",
         "transform-react-remove-prop-types",
         "transform-react-pure-class-to-function",
         "transform-promise-to-bluebird",
         "transform-es2015-modules-commonjs",
-        "transform-decorators-legacy"
+        "transform-decorators-legacy",
+        "add-module-exports"
       ]
     },
     "development": {
       "plugins": [
+        "add-module-exports",
         "transform-promise-to-bluebird",
         "transform-es2015-modules-commonjs",
         "transform-decorators-legacy",
@@ -22,6 +25,7 @@
     },
     "test": {
       "plugins": [
+        "add-module-exports",
         "transform-promise-to-bluebird",
         "transform-es2015-modules-commonjs",
         "transform-decorators-legacy",

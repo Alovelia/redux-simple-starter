@@ -1,3 +1,5 @@
+// for async functions and generators support
+import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { applyRouterMiddleware, browserHistory } from 'react-router';
@@ -20,21 +22,21 @@ import createRoutes from './routes';
 import './global.css';
 // Import selector for `syncHistoryWithStore`
 import { makeSelectLocationState } from './selectors';
+import configureStore from './store';
 
 if (process.env.NODE_ENV === 'development') {
   //image placeholders mock
   // require('holderjs');
 }
-
-/* eslint-disable */
-import configureStore from './store';
-
+// listen to uncaught errors and unhandled promises
 handleGlobalErrors();
+const initialState = {
+  // set intl defaults
+};
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
-const initialState = {};
 const store = configureStore(initialState, browserHistory);
 // const store = configureStore(initialState);
 
@@ -64,27 +66,25 @@ const renderApp = (App) => {
 };
 
 renderApp(Root);
+
+// #if process.env.NODE_ENV === 'development'
+const rerenderApp = () => {
+  // eslint-disable-next-line global-require
+  const NextRoot = require('./containers/Root');
+  renderApp(NextRoot);
+};
+
 // Webpack Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
-    /* eslint-disable */
-    const NextRoot = require('./containers/Root').default;
-    renderApp(NextRoot);
-  });
-
-  module.hot.accept('./routes', () => {
-    /* eslint-disable */
-    const NextRoot = require('./containers/Root').default;
-    renderApp(NextRoot);
-  });
-
-  // TODO think up what should be updated
-  // // modules.hot.accept does not accept dynamic dependencies,
-  // // have to be constants at compile-time
-  // module.hot.accept('./i18n', () => {
-  //   render(translationMessages);
-  // });
+  module.hot.accept('./containers/Root', rerenderApp);
+  // don't reload page if some route dependent files changed
+  module.hot.accept('./routes', rerenderApp);
+  // don't reload if some locale dependent files changed
+  module.hot.accept('./i18n/i18n-core', rerenderApp);
+  // selectors shouldn't reload browser
+  module.hot.accept('./i18n/i18n-selectors', rerenderApp);
 }
+// #endif
 
 // Uncomment service worker to get caching and offline mode
 // registerServiceWorker();

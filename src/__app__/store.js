@@ -78,7 +78,7 @@ export default function configureStore(initialState = {}, history) {
   if (module.hot) {
     module.hot.accept('./reducers', () => {
       import('./reducers').then((reducerModule) => {
-        const createReducers = reducerModule.default;
+        const createReducers = reducerModule;
         const nextReducers = createReducers(store.asyncReducers);
 
         store.replaceReducer(nextReducers);

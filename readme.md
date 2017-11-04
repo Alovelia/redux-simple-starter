@@ -22,3 +22,9 @@ It could be placed anywhere
   component: require('./containers/Home').default
 // #endif
 ```
+
+- few words about dependencies and devDependencies.
+dependencies will be automatically compiled to vendor.js
+Therefore I installed intl to devDependencies.
+For this library separate chunk will be created due to
+architecture.
