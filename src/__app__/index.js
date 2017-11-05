@@ -1,15 +1,21 @@
-// for async functions and generators support
 import 'babel-polyfill';
+
 import React from 'react';
 import { render } from 'react-dom';
-import { applyRouterMiddleware, browserHistory } from 'react-router';
-// import { browserHistory, hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+
 // Import error handlers
 import { handleGlobalErrors } from 'common/error-hander';
-// import FontFaceObserver from 'fontfaceobserver';
-// import { useScroll } from 'react-router-scroll';
-// import 'sanitize.css/sanitize.css';
+// import 'common/font-observer'; // before uncomment - $ yarn add fontfaceobserver
+
+// #if process.env.NODE_ENV === 'development'
+import 'common/holderjs';
+// #endif
+
+// Import CSS Global Styles
+import 'sanitize.css/sanitize.css';
+import './global.css';
 
 // Import root app
 import Root from './containers/root';
@@ -18,18 +24,13 @@ import Layout from './containers/layout';
 // Import routes
 import createRoutes from './routes';
 
-// Import CSS Global Styles
-import './global.css';
 // Import selector for `syncHistoryWithStore`
 import { makeSelectLocationState } from './selectors';
 import configureStore from './store';
 
-if (process.env.NODE_ENV === 'development') {
-  //image placeholders mock
-  // require('holderjs');
-}
 // listen to uncaught errors and unhandled promises
 handleGlobalErrors();
+
 const initialState = {
   // set intl defaults
 };

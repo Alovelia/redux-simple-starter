@@ -6,10 +6,10 @@ import { IntlProvider } from 'react-intl';
 import { createSelector } from 'reselect';
 import _ from 'common/helpers';
 import * as i18nSelectors from './i18n-selectors';
-import { loadLocaleData, isLocaleSupported } from './i18n-core';
+import { loadLocaleData } from './i18n-core';
 import { ACTION } from './i18n-reducer';
 
-export const I18nProvider = ({
+export const I18nComponent = ({
   messages, locale, children
 }) => {
   // don't start application until messages are loaded
@@ -24,7 +24,7 @@ export const I18nProvider = ({
     : null;
 };
 
-I18nProvider.propTypes = {
+I18nComponent.propTypes = {
   messages: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired,
@@ -51,4 +51,4 @@ export default compose(
         .then(updateMessages);
     }
   })
-)(I18nProvider);
+)(I18nComponent);

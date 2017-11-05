@@ -20,8 +20,9 @@ class App extends Component {
         this.setState({ updated: true });
         this.props.trigger();
       }}
-      >1Click ME 1 asd!</button>asdasdasd
-      endasdasdasdsdasdasd
+      >1Click ME!</button>asdasdasd
+      endaasdad  assssssssss aazzzzzzzz zz
+
       <FormattedMessage id="app.welcome" />
       <Child />
     </div>);
