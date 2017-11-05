@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-/* react-intl imports */
 import { FormattedMessage } from 'react-intl';
-import { ApiError } from 'common/error-hander';
+import { ApiError } from 'common/error-core';
+import Title from 'common/title/title';
 import Child from './child';
 
 // console.info(global);
@@ -14,6 +14,10 @@ class App extends Component {
     this.state = {};
     Promise.reject(new ApiError());
   }
+  componentWillReceiveProps(){
+    console.info('propszz');
+    console.log('props');
+  }
   render() {
     return (<div>
       <button onClick={() => {
@@ -21,8 +25,7 @@ class App extends Component {
         this.props.trigger();
       }}
       >1Click ME!</button>asdasdasd
-      endaasdad  assssssssss aazzzzzzzz zz
-
+      endaasdad  assssssssss aazzzzzzzz zz zzz zxc
       <FormattedMessage id="app.welcome" />
       <Child />
     </div>);

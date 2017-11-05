@@ -15,6 +15,14 @@ export class ApiError extends ExtendableError {
   }
 }
 
+export class CustomError extends ExtendableError {
+  // constructor is optional; you should omit it if you just want a custom error
+  // type for inheritance and type checking
+  constructor(message = 'Custom Error') {
+    super(message);
+  }
+}
+
 /*
 * @description
 * http://2ality.com/2016/04/unhandled-rejections.html

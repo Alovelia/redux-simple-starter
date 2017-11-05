@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import _ from 'common/helpers';
 import { constants, actions } from 'ducks-helpers';
 import handleActions from 'redux-actions/lib/handleActions';
 import { getDefaultSupportedLanguage } from './i18n-core';
@@ -11,7 +11,7 @@ export const TYPE = constants('@@intl', [
 
 export const ACTION = actions(TYPE);
 
-export const initialState = fromJS({
+export const initialState = _.fromJS({
   locale: getDefaultSupportedLanguage(),
   messages: {},
 });
@@ -27,6 +27,6 @@ export function updateLocale(state, { payload }) {
   return state.set('locale', payload);
 }
 export function updateMessages(state, { payload }) {
-  return state.set('messages', fromJS(payload));
+  return state.set('messages', _.fromJS(payload));
 }
 //†reducer

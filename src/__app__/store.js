@@ -21,10 +21,6 @@ import { fromJS } from 'immutable';
 // const sagaMiddleware = createSagaMiddleware();
 // import sagas from '../sagas';
 
-//----------------redux router
-// import { browserHistory, hashHistory } from 'react-router'; // eslint-disable-line no-unused-vars
-// import { routerMiddleware } from 'react-router-redux';
-
 import createReducer from './reducers';
 
 export default function configureStore(initialState = {}, history) {

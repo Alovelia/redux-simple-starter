@@ -24,11 +24,14 @@ export default class ErrorBoundary extends Component {
     this.setState({ hasError: true });
     // You can also log the error to an error reporting service
     // logErrorToMyService(error, info);
+    // TODO add root logger
+    // console.info(error, info);
   }
   render() {
     if (this.state.hasError) {
+      // TODO move text to locale
       // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      return <h1>Oops something went wrong.</h1>;
     }
     return this.props.children;
   }

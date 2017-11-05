@@ -49,6 +49,16 @@ export default compose(
       const { locale, updateMessages } = this.props;
       loadLocaleData(locale)
         .then(updateMessages);
+    },
+    componentWillReceiveProps(newProps) {
+      const { locale, updateMessages } = this.props;
+      const { newLocale } = newProps;
+
+      // locale was changed
+      if (newLocale && locale && newLocale !== locale) {
+        loadLocaleData(locale)
+          .then(updateMessages);
+      }
     }
   })
 )(I18nComponent);

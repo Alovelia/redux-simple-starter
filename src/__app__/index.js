@@ -1,3 +1,4 @@
+// Support for async functions and generators
 import 'babel-polyfill';
 
 import React from 'react';
@@ -6,7 +7,9 @@ import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 // Import error handlers
-import { handleGlobalErrors } from 'common/error-hander';
+import { handleGlobalErrors } from 'common/error-core';
+
+// Font Observer
 // import 'common/font-observer'; // before uncomment - $ yarn add fontfaceobserver
 
 // #if process.env.NODE_ENV === 'development'
@@ -28,7 +31,7 @@ import createRoutes from './routes';
 import { makeSelectLocationState } from './selectors';
 import configureStore from './store';
 
-// listen to uncaught errors and unhandled promises
+// Listen to uncaught errors and unhandled promises
 handleGlobalErrors();
 
 const initialState = {
@@ -49,10 +52,7 @@ const history = syncHistoryWithStore(browserHistory, store, {
 });
 
 // Set up the router, wrapping all Routes in the App component
-const rootRoute = {
-  component: Layout,
-  childRoutes: createRoutes(store),
-};
+const rootRoute = createRoutes(store);
 
 const renderApp = (App) => {
   render(
@@ -88,4 +88,7 @@ if (module.hot) {
 // #endif
 
 // Uncomment service worker to get caching and offline mode
-// registerServiceWorker();
+// const registerServiceWorker = require('./register-service-worker');
+// if (process.env.NODE_ENV === 'production') {
+//   registerServiceWorker();
+// }

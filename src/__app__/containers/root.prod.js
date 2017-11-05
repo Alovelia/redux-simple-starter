@@ -26,7 +26,7 @@ const Root = ({ store, history, rootRoute }) => {
 Root.propTypes = {
   store: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  rootRoute: PropTypes.object.isRequired
+  rootRoute: PropTypes.array.isRequired
 };
 
 export default Root;

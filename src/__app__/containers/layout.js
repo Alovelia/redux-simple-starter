@@ -9,19 +9,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import ErrorBoundary from 'common/error-boundary';
+import Title from 'common/title/title';
+import { connect } from 'react-redux';
 
 export function App(props) {
   return (
     <div>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s"
+        defaultTitle="..."
         meta={[
-          { name: 'description', content: 'React.js' },
+          { name: 'description', content: '...' },
         ]}
       />
+      <Title id={props.title} />
+
       {/*<Header />*/}
-      {React.Children.toArray(props.children)}
+      <ErrorBoundary>
+        {React.Children.toArray(props.children)}
+      </ErrorBoundary>
       {/*<Footer />*/}
     </div>
   );
@@ -29,9 +36,17 @@ export function App(props) {
 
 App.propTypes = {
   children: PropTypes.node,
+  title: PropTypes.string,
 };
 App.defaultProps = {
   children: null,
+  title: '_',
 };
 
-export default App;
+const mapStateToProps = state => ({
+  title: state.getIn(['app', 'activePage', 'title'])
+});
+
+export default connect(
+  mapStateToProps
+)(App);
