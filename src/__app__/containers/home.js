@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 /* react-intl imports */
 import { FormattedMessage } from 'react-intl';
-import { ApiError } from 'common/ErrorHander';
+import { ApiError } from 'common/error-hander';
 import Child from './child';
 
 // console.info(global);
@@ -21,7 +21,7 @@ class App extends Component {
         this.props.trigger();
       }}
       >1Click ME 1 asd!</button>asdasdasd
-      endasdasdasdsd
+      endasdasdasdsdasdasd
       <FormattedMessage id="app.welcome" />
       <Child />
     </div>);

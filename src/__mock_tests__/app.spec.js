@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // https://github.com/airbnb/enzyme
 import { mount, shallow } from 'enzyme';
-import App from './App';
+import App from './app';
 
 /* global it, expect */
 it('renders without crashing', () => {
@@ -19,5 +19,5 @@ it('renders and check html in component', () => {
 it('renders and checks text in tag', () => {
   const wrapper = shallow(<App />);
   const code = wrapper.find('code');
-  expect(code.text()).toBe('src/App.js');
+  expect(code.text()).toBe('src/app.js');
 });

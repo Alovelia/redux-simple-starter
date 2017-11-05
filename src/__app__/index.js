@@ -6,14 +6,14 @@ import { applyRouterMiddleware, browserHistory } from 'react-router';
 // import { browserHistory, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 // Import error handlers
-import { handleGlobalErrors } from 'common/ErrorHander';
+import { handleGlobalErrors } from 'common/error-hander';
 // import FontFaceObserver from 'fontfaceobserver';
 // import { useScroll } from 'react-router-scroll';
 // import 'sanitize.css/sanitize.css';
 
 // Import root app
-import Root from './containers/Root';
-import Layout from './containers/Layout';
+import Root from './containers/root';
+import Layout from './containers/layout';
 
 // Import routes
 import createRoutes from './routes';
@@ -70,13 +70,13 @@ renderApp(Root);
 // #if process.env.NODE_ENV === 'development'
 const rerenderApp = () => {
   // eslint-disable-next-line global-require
-  const NextRoot = require('./containers/Root');
+  const NextRoot = require('./containers/root');
   renderApp(NextRoot);
 };
 
 // Webpack Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./containers/Root', rerenderApp);
+  module.hot.accept('./containers/root', rerenderApp);
   // don't reload page if some route dependent files changed
   module.hot.accept('./routes', rerenderApp);
   // don't reload if some locale dependent files changed
