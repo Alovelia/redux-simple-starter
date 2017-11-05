@@ -14,6 +14,8 @@ module.exports = {
     library: '[name]_[hash]'
   },
   plugins: [
+    // https://github.com/moment/moment/issues/2517#issuecomment-185836313
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en-gb/),
     new CleanWebpackPlugin([
       '*.json',
       '*.js'
@@ -24,43 +26,25 @@ module.exports = {
       path: 'public/static/vendor/[name]-manifest.json',
       name: '[name]_[hash]'
     }),
-    // TODO - investigate what is really faster when
-    // I have a lot if libraries in package.json at the moment no difference even slower
-    // new ParallelUglifyPlugin({
-    //   uglifyJS: {
-    //     compress: {
-    //       // https://github.com/mishoo/UglifyJS2#compress-options
-    //       sequences: true,
-    //       booleans: true,
-    //       loops: true,
-    //       unused: true,
-    //       warnings: false,
-    //       drop_console: true,
-    //       unsafe: true,
-    //       dead_code: true,
-    //       comparisons: false,
-    //     }
-    //   },
-    // }),
-    process.env.NODE_ENV !== 'production'
-      ? () => {
-      }
-      : new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false,
-          // Disabled because of an issue with Uglify breaking seemingly valid code:
-          // https://github.com/facebookincubator/create-react-app/issues/2376
-          // Pending further investigation:
-          // https://github.com/mishoo/UglifyJS2/issues/2011
-          comparisons: false,
-        },
-        output: {
-          comments: false,
-          // Turned on because emoji and regex is not minified properly using default
-          // https://github.com/facebookincubator/create-react-app/issues/2488
-          ascii_only: true,
-        },
-        sourceMap: false,
-      }),
+    // process.env.NODE_ENV !== 'production'
+    //   ? () => {}
+    //   :
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        // Disabled because of an issue with Uglify breaking seemingly valid code:
+        // https://github.com/facebookincubator/create-react-app/issues/2376
+        // Pending further investigation:
+        // https://github.com/mishoo/UglifyJS2/issues/2011
+        comparisons: false,
+      },
+      output: {
+        comments: false,
+        // Turned on because emoji and regex is not minified properly using default
+        // https://github.com/facebookincubator/create-react-app/issues/2488
+        ascii_only: true,
+      },
+      sourceMap: false,
+    }),
   ]
 };

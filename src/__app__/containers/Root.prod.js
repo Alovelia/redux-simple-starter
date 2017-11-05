@@ -3,22 +3,26 @@ import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 import { Router } from 'react-router';
 /* react-intl imports */
-import { IntlProvider } from 'react-intl';
+import I18nProvider from '../i18n/i18n-provider';
 
 import Home from './home';
+//DEV TOOLS
+// import DevTools from './DevTools';
 
 /*eslint-disable*/
 const Root = ({ store, history, rootRoute }) => {
   return (
       <Provider store={store} >
-        <IntlProvider locale={'en'} messages={require('../i18n/en.json')}>
+        {/*<IntlProvider locale={'en'} messages={require('../i18n/en.json')}>*/}
+        <I18nProvider>
           <Router
             history={history}
             routes={rootRoute}
           />
-          {/*<Home />*/}
-        </IntlProvider>
-        {/*<LanguageProvider messages={messages}>*/}
+        </I18nProvider>
+        {/*<Home />*/}
+        {/*</IntlProvider>*/}
+        {/*<I18nProvider messages={messages}>*/}
         {/*<Router*/}
         {/*history={history}*/}
         {/*routes={rootRoute}*/}
@@ -28,7 +32,7 @@ const Root = ({ store, history, rootRoute }) => {
         {/*applyRouterMiddleware(useScroll())*/}
         {/*}*/}
         {/*/>*/}
-        {/*</LanguageProvider>*/}
+        {/*</I18nProvider>*/}
       </Provider>
   );
 };
@@ -36,5 +40,6 @@ const Root = ({ store, history, rootRoute }) => {
 Root.propTypes = {
   store: PropTypes.object.isRequired
 };
+
 
 export default Root;

@@ -25,6 +25,10 @@ It could be placed anywhere
 
 - few words about dependencies and devDependencies.
 dependencies will be automatically compiled to vendor.js
-Therefore I installed intl to devDependencies.
+Therefore I installed `intl` to devDependencies.
 For this library separate chunk will be created due to
 architecture.
+Also moved `moment`, `lodash`, `ramda`, `recompose`
+Reason is the same - these libraries has custom workflow with
+webpack and babel plugins
+and their size too big for vendor dll file.

@@ -1,9 +1,9 @@
-import identity from 'ramda/src/identity';
-import isEmpty from 'ramda/src/isEmpty';
-
-// custom methods should be here
+// https://github.com/megawac/babel-plugin-ramda
+// https://github.com/lodash/babel-plugin-lodash
+import R from 'ramda';
+// import _ from 'lodash';
 
 export default {
-  identity,
-  isEmpty,
+  identity: R.identity,
+  isEmpty: R.isEmpty,
 };
