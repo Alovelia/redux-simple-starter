@@ -6,7 +6,11 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
-    vendor: Object.keys(packageJSON.dependencies),
+    vendor: Object.keys(packageJSON.dependencies)
+      .filter((key) => {
+        return ~['lodash', 'ramda', 'recompose', 'moment']
+          .indexOf(key);
+      }),
   },
   output: {
     path: path.resolve(__dirname, '../public/static/vendor'),
