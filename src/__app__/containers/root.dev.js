@@ -13,7 +13,7 @@ import I18nProvider from '../i18n/i18n-provider';
 // To keep HMR working with frozen page reload for route dependent component
 // such components should be listed here in root component.
 // --------------------- /ATTENTION ----------------------------------------
-import './home';
+import '../../home/containers/home';
 // †module
 
 const Root = ({ store, history, rootRoute }) => {

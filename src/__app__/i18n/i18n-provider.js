@@ -36,6 +36,23 @@ const mapStateToProps = createSelector(
   (locale, messages) => ({ locale, messages })
 );
 
+export function componentDidMount() {
+  const { locale, updateMessages } = this.props;
+  loadLocaleData(locale)
+    .then(updateMessages);
+}
+
+export function componentWillReceiveProps(newProps) {
+  const { locale, updateMessages } = this.props;
+  const { newLocale } = newProps;
+
+  // locale was changed
+  if (newLocale && locale && newLocale !== locale) {
+    loadLocaleData(locale)
+      .then(updateMessages);
+  }
+}
+
 export default compose(
   connect(
     mapStateToProps,
@@ -45,20 +62,7 @@ export default compose(
     }
   ),
   lifecycle({
-    componentDidMount() {
-      const { locale, updateMessages } = this.props;
-      loadLocaleData(locale)
-        .then(updateMessages);
-    },
-    componentWillReceiveProps(newProps) {
-      const { locale, updateMessages } = this.props;
-      const { newLocale } = newProps;
-
-      // locale was changed
-      if (newLocale && locale && newLocale !== locale) {
-        loadLocaleData(locale)
-          .then(updateMessages);
-      }
-    }
+    componentDidMount,
+    componentWillReceiveProps,
   })
 )(I18nComponent);

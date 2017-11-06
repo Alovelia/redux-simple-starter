@@ -1,4 +1,6 @@
 import Layout from './containers/layout';
+import homeRoute from '../home/route';
+//†import
 
 // These are the pages you can go to.
 // They are all wrapped in the App component, which should contain the navbar etc
@@ -6,14 +8,7 @@ import Layout from './containers/layout';
 // about the code splitting business
 // import { getAsyncInjectors } from './utils/asyncInjectors';
 
-const errorLoading = (err) => {
-  console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
-};
-
-const loadModule = cb => (componentModule) => {
-  cb(null, componentModule);
-};
-
+// eslint-disable-next-line
 export default function createRoutes(store) {
   // create reusable async injectors using getAsyncInjectors factory
   // const { injectReducer, injectSagas } = getAsyncInjectors(store);
@@ -22,30 +17,8 @@ export default function createRoutes(store) {
     {
       component: Layout,
       childRoutes: [
-        {
-          path: '/',
-          name: 'home',
-          getComponent(nextState, cb) {
-            const importModules = Promise.all([
-              // import('containers/HomePage/reducer'),
-              // import('containers/HomePage/sagas'),
-              import('./containers/home'),
-            ]);
-
-            const renderRoute = loadModule(cb);
-
-            importModules.then(([
-              /*reducer, sagas,*/ component
-            ]) => {
-              // injectReducer('home', reducer.default);
-              // injectSagas(sagas.default);
-
-              renderRoute(component);
-            });
-
-            importModules.catch(errorLoading);
-          },
-        },
+        homeRoute(store),
+        //†route
         // {
         //   path: '/features',
         //   name: 'features',
@@ -64,8 +37,32 @@ export default function createRoutes(store) {
         //       .catch(errorLoading);
         //   },
         // },
+        //†route
       ],
-    }
+      // onEnter: requireAuth(store),
+      // onChange: test(store)
+    },
+    // {
+    //
+    //   component: LoginLayoutContainer,
+    //   childRoutes: [
+    //     loginRoute(store),
+    //     forgotPasswordRoute(store),
+    //     newPasswordRoute(store)
+    //   ]
+    // },
+    // {
+    //   path: '/logout',
+    //   onEnter: (nextState, replace) => {
+    //     global.location.href = `${global.context}/api-v1/logout`;
+    //   }
+    // },
+    // {
+    //   path: '/*',
+    //   onEnter: ({ params }, replace) => {
+    //     replace('/');
+    //   }
+    // }
   ];
 }
 /*eslint-disable*/

@@ -1,10 +1,11 @@
-export const DEFAULT_PAGE = 'welcome';
+export const DEFAULT_PAGE = 'home';
 
 export const routingConfig = {
   // TODO each object should be placed in own module
-  'welcome': {
-    id: 'welcome',
-    title: 'welcome.title',
+  'home': {
+    path: '/',
+    name: 'home',
+    title: 'home.title',
     // permissionId: 'WELCOME',
   }
 };

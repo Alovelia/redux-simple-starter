@@ -13,7 +13,7 @@ import ErrorBoundary from 'common/error-boundary';
 import Title from 'common/title/title';
 import { connect } from 'react-redux';
 
-export function App(props) {
+export function Layout(props) {
   return (
     <div>
       <Helmet
@@ -34,11 +34,11 @@ export function App(props) {
   );
 }
 
-App.propTypes = {
+Layout.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
 };
-App.defaultProps = {
+Layout.defaultProps = {
   children: null,
   title: '_',
 };
@@ -49,4 +49,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps
-)(App);
+)(Layout);

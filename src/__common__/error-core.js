@@ -93,6 +93,10 @@ export function listenGlobalExceptions() {
   }
 }
 
+export function errorLoading(err) {
+  console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
+}
+
 export function handleGlobalErrors() {
   listenGlobalExceptions();
   listenGlobalPromiseRejections();

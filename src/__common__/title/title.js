@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { injectIntl } from 'react-intl';
 
-export function Title(props) {
+export function TitleComponent(props) {
   return (
     <Helmet>
       <title>
@@ -21,12 +21,12 @@ export function Title(props) {
   );
 }
 
-Title.propTypes = {
+TitleComponent.propTypes = {
   intl: PropTypes.object.isRequired,
   id: PropTypes.string,
 };
-Title.defaultProps = {
+TitleComponent.defaultProps = {
   id: '_',
 };
 
-export default injectIntl(Title);
+export default injectIntl(TitleComponent);
