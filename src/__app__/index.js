@@ -81,9 +81,9 @@ if (module.hot) {
   // don't reload page if some route dependent files changed
   module.hot.accept('./routes', rerenderApp);
   // don't reload if some locale dependent files changed
-  module.hot.accept('./i18n/i18n-core', rerenderApp);
+  module.hot.accept('../__i18n__/i18n-core', rerenderApp);
   // selectors shouldn't reload browser
-  module.hot.accept('./i18n/i18n-selectors', rerenderApp);
+  module.hot.accept('../__i18n__/i18n-selectors', rerenderApp);
 }
 // #endif
 

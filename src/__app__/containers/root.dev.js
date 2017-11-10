@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { Router, applyRouterMiddleware } from 'react-router';
 import useScroll from 'react-router-scroll/lib/useScroll';
 import { AppContainer } from 'react-hot-loader';
-import I18nProvider from '../i18n/i18n-provider';
+import I18nProvider from '../../__i18n__/i18n-provider';
 
 // --------------------- ATTENTION -----------------------------------------
 // It's a hack for full HMR support

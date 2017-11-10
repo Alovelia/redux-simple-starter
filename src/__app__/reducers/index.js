@@ -6,7 +6,7 @@ import { combineReducers } from 'redux-immutable';
 
 import appReducer from './app-reducer';
 import routeReducer from './route-reducer';
-import i18nReducer from '../i18n/i18n-reducer';
+import i18nReducer from '../../__i18n__/i18n-reducer';
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
