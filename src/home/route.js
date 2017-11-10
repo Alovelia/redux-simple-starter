@@ -8,9 +8,9 @@ export default store => ({
   name,
   getComponent(nextState, cb) {
     const importModules = Promise.all([
-      // import('containers/HomePage/reducer'),
-      // import('containers/HomePage/sagas'),
-      import('./containers/home'),
+      // import('containers/HomePage/reducer' /* webpackChunkName: "home" */),
+      // import('containers/HomePage/sagas' /* webpackChunkName: "home" */),
+      import('./containers/home' /* webpackChunkName: "home" */),
     ]);
 
     importModules.then(([

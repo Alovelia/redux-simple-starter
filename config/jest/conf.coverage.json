@@ -1,7 +1,7 @@
 {
   "setupFiles": [
     "<rootDir>/config/jest/polyfills.js",
-    "<rootDir>/config/jest/enzymeAdapter.js"
+    "<rootDir>/config/jest/enzyme-adapter.js"
   ],
   "rootDir": "../../",
   "roots": ["<rootDir>/src"],
@@ -15,7 +15,7 @@
     "!**/src/registerServiceWorker.js",
     "!**/__mock_tests__/**",
     "!**/config/jest/polyfills.js",
-    "!**/config/jest/enzymeAdapter.js"
+    "!**/config/jest/enzyme-adapter.js"
   ],
   "coverageDirectory": "<rootDir>/coverage",
   "testPathIgnorePatterns": [
@@ -29,10 +29,10 @@
   "testEnvironment": "jsdom",
   "transform": {
     "^.+\\.(js|jsx)$": "babel-jest",
-    "^.*\\.(css|less|styl|scss|sass)$": "<rootDir>/config/jest/cssTransform.js",
-    "^.*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/fileTransform.js",
-    "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js",
-    "^.*[.](jpg|JPG|gif|GIF|png|PNG|less|LESS)$": "<rootDir>/config/jest/emptyTransform.js"
+    "^.*\\.(css|less|styl|scss|sass)$": "<rootDir>/config/jest/css-transform.js",
+    "^.*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/file-transform.js",
+    "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/file-transform.js",
+    "^.*[.](jpg|JPG|gif|GIF|png|PNG|less|LESS)$": "<rootDir>/config/jest/empty-transform.js"
   },
   "unmockedModulePathPatterns": [
     "react",

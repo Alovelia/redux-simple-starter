@@ -72,13 +72,12 @@ export default function configureStore(initialState = {}, history) {
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   if (module.hot) {
-    module.hot.accept('./reducers', () => {
-      import('./reducers').then((reducerModule) => {
-        const createReducers = reducerModule;
-        const nextReducers = createReducers(store.asyncReducers);
+    module.hot.accept('./reducers', async () => {
+      const reducerModule = await import('./reducers');
+      const createReducers = reducerModule;
+      const nextReducers = createReducers(store.asyncReducers);
 
-        store.replaceReducer(nextReducers);
-      });
+      store.replaceReducer(nextReducers);
     });
   }
 
