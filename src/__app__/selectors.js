@@ -1,11 +1,12 @@
 /**
  * The global state selectors
  */
-// import { createSelector } from 'reselect';
+import { createSelector } from 'reselect';
 
 // const selectGlobal = state => state.get('global');
 
-const selectRoute = state => state.get('route');
+export const selectRoute = state => state.get('route');
+export const selectApp = state => state.get('app');
 
 // const makeSelectCurrentUser = () => createSelector(
 //   selectGlobal,
@@ -44,7 +45,7 @@ const selectRoute = state => state.get('route');
 //   );
 // };
 
-const makeSelectLocationState = () => {
+export const makeSelectLocationState = () => {
   let prevRoutingState;
   let prevRoutingStateJS;
 
@@ -60,12 +61,16 @@ const makeSelectLocationState = () => {
   };
 };
 
-export {
-  selectRoute,
-  // selectGlobal,
-  // makeSelectCurrentUser,
-  // makeSelectLoading,
-  // makeSelectError,
-  // makeSelectRepos,
-  makeSelectLocationState,
-};
+export const makeActivePageSelector = () => createSelector(
+  selectApp,
+  app => app.get('activePage')
+);
+
+export const makeTitleSelector = () => createSelector(
+  makeActivePageSelector(),
+  (activePage) => {
+    if (activePage) {
+      return activePage.get('title');
+    }
+  }
+);

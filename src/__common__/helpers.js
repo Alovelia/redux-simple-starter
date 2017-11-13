@@ -1,7 +1,7 @@
 // https://github.com/megawac/babel-plugin-ramda
 // https://github.com/lodash/babel-plugin-lodash
 import * as R from 'ramda';
-// import _ from 'lodash';
+import _ from 'lodash/fp';
 import { fromJS } from 'immutable';
 import { CustomError } from 'common/error-core';
 
@@ -18,6 +18,7 @@ export default {
   is: R.is,
   isEmpty: R.isEmpty,
   isFunction,
+  flatten: _.flatten,
   fromJS,
   toJS
 };

@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { FormattedMessage } from 'react-intl';
 import { ApiError } from 'common/error-core';
 import Child from './child';
+import { ACTION } from '../reducer';
 
 // console.info(global);
 /* eslint-disable */
@@ -13,27 +14,26 @@ class App extends Component {
     this.state = {};
     Promise.reject(new ApiError());
   }
-  componentWillReceiveProps(){
-    console.info('propszz');
-    console.log('props');
-  }
   render() {
     return (<div>
       <button onClick={() => {
         this.setState({ updated: true });
         this.props.trigger();
       }}
-      >1Click ME!</button>asdasdasd
-      endaasdad  assssssssss aazzzzzzzz zzaaa asd asd asdas asd
+      >Trigger async action</button>
       <FormattedMessage id="app.welcome" />
       <Child />
     </div>);
   }
 }
 
+const mapStateToProps = () => ({});
+const mapDispatchToProps = {
+  trigger: ACTION.get,
+  //†action
+};
+
 export default compose(
-  connect(() => ({}), {
-    trigger: () => ({ type: 'EVENT' })
-  })
+  connect(mapStateToProps, mapDispatchToProps)
 )(App);
 

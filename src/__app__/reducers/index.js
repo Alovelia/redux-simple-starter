@@ -4,9 +4,21 @@
  */
 import { combineReducers } from 'redux-immutable';
 
+import i18nReducer from 'src/__i18n__/reducer';
 import appReducer from './app-reducer';
 import routeReducer from './route-reducer';
-import i18nReducer from '../../__i18n__/i18n-reducer';
+
+// #if process.env.NODE_ENV === 'development'
+/* eslint-disable import/first */
+import home from 'src/home/reducer';
+/* eslint-enable import/first */
+//†import
+
+const devAsyncReducers = {
+  home,
+  //†reducer
+};
+// #endif
 
 /**
  * Creates the main reducer with the asynchronously loaded ones
@@ -17,5 +29,9 @@ export default function createReducer(asyncReducers) {
     app: appReducer,
     intl: i18nReducer,
     ...asyncReducers,
+
+    // #if process.env.NODE_ENV === 'development'
+    ...devAsyncReducers,
+    // #endif
   });
 }

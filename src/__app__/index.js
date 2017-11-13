@@ -18,11 +18,10 @@ import 'common/holderjs';
 
 // Import CSS Global Styles
 import 'sanitize.css/sanitize.css';
-import './global.css';
+import './app.css';
 
 // Import root app
-import Root from './containers/root';
-import Layout from './containers/layout';
+import Root from './components/root';
 
 // Import routes
 import createRoutes from './routes';
@@ -60,7 +59,6 @@ const renderApp = (App) => {
       store={store}
       history={history}
       rootRoute={rootRoute}
-      layout={Layout}
     />,
     document.getElementById('root')
   );
@@ -71,19 +69,20 @@ renderApp(Root);
 // #if process.env.NODE_ENV === 'development'
 const rerenderApp = () => {
   // eslint-disable-next-line global-require
-  const NextRoot = require('./containers/root');
+  const NextRoot = require('./components/root');
   renderApp(NextRoot);
 };
 
 // Webpack Hot Module Replacement API
 if (module.hot) {
-  module.hot.accept('./containers/root', rerenderApp);
+  module.hot.accept('./components/root', rerenderApp);
   // don't reload page if some route dependent files changed
   module.hot.accept('./routes', rerenderApp);
   // don't reload if some locale dependent files changed
-  module.hot.accept('../__i18n__/i18n-core', rerenderApp);
+  module.hot.accept('../__i18n__/core', rerenderApp);
   // selectors shouldn't reload browser
-  module.hot.accept('../__i18n__/i18n-selectors', rerenderApp);
+  module.hot.accept('../__i18n__/selectors', rerenderApp);
+  //†selector
 }
 // #endif
 

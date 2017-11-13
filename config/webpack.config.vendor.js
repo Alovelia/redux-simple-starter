@@ -18,13 +18,19 @@ if (env.stringified['process.env'].NODE_ENV !== '"production"') {
   throw new Error('Production builds must have NODE_ENV=production.');
 }
 
+const dllIgnored = [
+  'lodash',
+  'ramda',
+  'recompose',
+  'moment',
+  'invariant',
+  'warning'
+];
+
 module.exports = {
   entry: {
     vendor: Object.keys(packageJSON.dependencies)
-      .filter((key) => {
-        return ~['lodash', 'ramda', 'recompose', 'moment']
-          .indexOf(key);
-      }),
+      .filter(key => ~dllIgnored.indexOf(key)),
   },
   output: {
     path: path.resolve(__dirname, '../public/static/vendor'),

@@ -1,4 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
+import { fromJS } from 'immutable';
+import { routerMiddleware } from 'react-router-redux';
+import createSagaMiddleware from 'redux-saga';
 /* eslint-disable no-redeclare */
 // #if process.env.NODE_ENV === 'development'
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -9,26 +12,24 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 // #endif
 /* eslint-enable no-redeclare */
-import { routerMiddleware } from 'react-router-redux';
-import { fromJS } from 'immutable';
+
+import createReducer from './reducers';
+import sagas from './sagas';
+
 // import { persistState } from 'redux-devtools';
 // import DevTools from '../containers/DevTools';
 // import { loadState, saveState } from '/common/local-storage-module';
 // saga
 // import throttle from 'lodash/throttle';
 // import createSagaMiddleware from 'redux-saga';
-
-// const sagaMiddleware = createSagaMiddleware();
-// import sagas from '../sagas';
-
-import createReducer from './reducers';
+const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(initialState = {}, history) {
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
   const middlewares = [
-    // sagaMiddleware,
+    sagaMiddleware,
     routerMiddleware(history),
   ];
 
@@ -64,22 +65,36 @@ export default function configureStore(initialState = {}, history) {
   // },1000))
 
   //run saga
-  // sagaMiddleware.run(sagas);
+  let sagaProcess = sagaMiddleware.run(sagas);
 
   // Extensions
-  // store.runSaga = sagaMiddleware.run;
+  store.runSaga = sagaMiddleware.run;
   store.asyncReducers = {}; // Async reducer registry
 
+  // #if process.env.NODE_ENV === 'development'
   // Make reducers hot reloadable, see http://mxs.is/googmo
-  if (module.hot) {
-    module.hot.accept('./reducers', async () => {
-      const reducerModule = await import('./reducers');
-      const createReducers = reducerModule;
-      const nextReducers = createReducers(store.asyncReducers);
+  const reloadReducers = async () => {
+    const createReducers = await import('./reducers');
+    const nextReducers = createReducers(store.asyncReducers);
+    store.replaceReducer(nextReducers);
+  };
 
-      store.replaceReducer(nextReducers);
+  // https://stackoverflow.com/a/40783428/6190198
+  const reloadSagas = async () => {
+    const getNewSagas = await import('./sagas');
+    sagaProcess.cancel();
+    sagaProcess.done.then(() => {
+      sagaProcess = sagaMiddleware.run(function* replacedSaga() {
+        yield getNewSagas();
+      });
     });
+  };
+
+  if (module.hot) {
+    module.hot.accept('./reducers', reloadReducers);
+    module.hot.accept('./sagas', reloadSagas);
   }
+  // #endif
 
   return store;
 }

@@ -2,7 +2,7 @@ import { constants, actions } from 'ducks-helpers';
 import handleActions from 'redux-actions/lib/handleActions';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import _ from 'common/helpers';
-import { routingConfig, DEFAULT_PAGE } from '../config';
+import { routingConfig, DEFAULT_PAGE } from '../routes-config';
 
 export const TYPE = constants('app', [
   //†type
@@ -18,7 +18,7 @@ const initialState = _.fromJS({
     repositories: false,
   },
   permissions: [],
-  activePage: {}
+  activePage: {},
 });
 
 export default handleActions({

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { Router, applyRouterMiddleware } from 'react-router';
 import useScroll from 'react-router-scroll/lib/useScroll';
-import I18nProvider from '../../__i18n__/i18n-provider';
+import I18nProvider from '../../__i18n__/containers/i18n';
 
 const Root = ({ store, history, rootRoute }) => {
   return (

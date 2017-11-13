@@ -12,8 +12,7 @@
         "transform-react-pure-class-to-function",
         "transform-promise-to-bluebird",
         "transform-es2015-modules-commonjs",
-        "transform-decorators-legacy",
-        "add-module-exports"
+        "transform-decorators-legacy"
       ]
     },
     "development": {

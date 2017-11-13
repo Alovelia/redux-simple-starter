@@ -1,4 +1,4 @@
-import Layout from './containers/layout';
+import MainLayout from './containers/layout';
 import homeRoute from '../home/route';
 //†import
 
@@ -10,12 +10,9 @@ import homeRoute from '../home/route';
 
 // eslint-disable-next-line
 export default function createRoutes(store) {
-  // create reusable async injectors using getAsyncInjectors factory
-  // const { injectReducer, injectSagas } = getAsyncInjectors(store);
-
   return [
     {
-      component: Layout,
+      component: MainLayout,
       childRoutes: [
         homeRoute(store),
         //†route
@@ -54,7 +51,7 @@ export default function createRoutes(store) {
     // {
     //   path: '/logout',
     //   onEnter: (nextState, replace) => {
-    //     global.location.href = `${global.context}/api-v1/logout`;
+    //     global.location.href = `${global.context}/api/logout`;
     //   }
     // },
     // {

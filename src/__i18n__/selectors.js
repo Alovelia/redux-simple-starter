@@ -6,9 +6,9 @@ import { createSelector } from 'reselect';
 export const selectIntl = state => state.get('intl');
 
 /**
- * Direct selector to the languageToggle state domain
+ * Select main language
  */
-export const selectLanguage = createSelector(
+export const makeSelectLanguage = createSelector(
   selectIntl,
   intl => intl.get('language')
 );
@@ -16,7 +16,7 @@ export const selectLanguage = createSelector(
 /**
  * Select the language locale
  */
-export const selectLocale = createSelector(
+export const makeSelectLocale = () => createSelector(
   selectIntl,
   intl => intl.get('locale')
 );
@@ -24,7 +24,7 @@ export const selectLocale = createSelector(
 /**
  * Select messages for current language
  */
-export const selectMessages = createSelector(
+export const makeSelectMessages = () => createSelector(
   selectIntl,
   (intl) => {
     const messages = intl.get('messages');

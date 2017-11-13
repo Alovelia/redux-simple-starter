@@ -1,7 +1,7 @@
 import _ from 'common/helpers';
 import { constants, actions } from 'ducks-helpers';
 import handleActions from 'redux-actions/lib/handleActions';
-import { getDefaultSupportedLanguage } from './i18n-core';
+import { getDefaultSupportedLanguage } from './core';
 
 export const TYPE = constants('@@intl', [
   'UPDATE_LOCALE',
