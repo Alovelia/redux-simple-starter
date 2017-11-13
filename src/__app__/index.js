@@ -67,23 +67,31 @@ const renderApp = (App) => {
 renderApp(Root);
 
 // #if process.env.NODE_ENV === 'development'
+// <-----------------HMR---------------------
 const rerenderApp = () => {
   // eslint-disable-next-line global-require
   const NextRoot = require('./components/root');
   renderApp(NextRoot);
 };
 
+const rerenderRoutes = () => {
+  // eslint-disable-next-line
+  require('./routes')(); // it will update related routes
+  rerenderApp();
+};
+
 // Webpack Hot Module Replacement API
 if (module.hot) {
   module.hot.accept('./components/root', rerenderApp);
   // don't reload page if some route dependent files changed
-  module.hot.accept('./routes', rerenderApp);
+  module.hot.accept('./routes', rerenderRoutes);
   // don't reload if some locale dependent files changed
   module.hot.accept('../__i18n__/core', rerenderApp);
   // selectors shouldn't reload browser
   module.hot.accept('../__i18n__/selectors', rerenderApp);
   //†selector
 }
+// -----------------HMR-------------------- />
 // #endif
 
 // Uncomment service worker to get caching and offline mode

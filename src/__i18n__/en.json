@@ -1,5 +1,6 @@
 {
   "_": " ",
-  "app.welcome": "Welcome123123123",
-  "home.title": "Welcome"
+  "home.button-trigger": "Trigger async action",
+  "home.title": "Title Welcome",
+  "home.welcome": "Welcome"
 }

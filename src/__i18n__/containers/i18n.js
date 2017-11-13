@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import { compose } from 'redux';
 import { IntlProvider } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import _ from 'common/helpers';
@@ -9,43 +9,41 @@ import { makeSelectLocale, makeSelectMessages } from '../selectors';
 import { loadLocaleData } from '../core';
 import { ACTION } from '../reducer';
 
-export const I18nComponent = ({
-  messages, locale, children
-}) => {
-  // don't start application until messages are loaded
-  return !_.isEmpty(messages)
-    ? <IntlProvider
-      messages={messages}
-      locale={locale}
-      key={locale}
-    >
-      { children }
-    </IntlProvider>
-    : null;
-};
+export class I18nContainer extends Component {
+  async componentDidMount() {
+    const { locale, updateMessages } = this.props;
+    const messages = await loadLocaleData(locale);
+    updateMessages(messages);
+  }
+  async componentWillReceiveProps(newProps) {
+    const { locale, updateMessages } = this.props;
+    const { newLocale } = newProps;
 
-I18nComponent.propTypes = {
+    // locale was changed - switch language
+    if (newLocale && locale && newLocale !== locale) {
+      const messages = await loadLocaleData(locale);
+      updateMessages(messages);
+    }
+  }
+  render() {
+    const { messages, locale, children } = this.props;
+    return !_.isEmpty(messages)
+      ? <IntlProvider
+        messages={messages}
+        locale={locale}
+        key={locale}
+      >
+        { children }
+      </IntlProvider>
+      : null;
+  }
+}
+
+I18nContainer.propTypes = {
   messages: PropTypes.object.isRequired,
   locale: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired,
 };
-
-export function componentDidMount() {
-  const { locale, updateMessages } = this.props;
-  loadLocaleData(locale)
-    .then(updateMessages);
-}
-
-export async function componentWillReceiveProps(newProps) {
-  const { locale, updateMessages } = this.props;
-  const { newLocale } = newProps;
-
-  // locale was changed
-  if (newLocale && locale && newLocale !== locale) {
-    const messages = await loadLocaleData(locale);
-    updateMessages(messages);
-  }
-}
 
 const mapStateToProps = createStructuredSelector({
   locale: makeSelectLocale(),
@@ -62,8 +60,4 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps
   ),
-  lifecycle({
-    componentDidMount,
-    componentWillReceiveProps,
-  })
-)(I18nComponent);
+)(I18nContainer);

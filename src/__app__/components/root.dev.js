@@ -6,19 +6,9 @@ import useScroll from 'react-router-scroll/lib/useScroll';
 import { AppContainer } from 'react-hot-loader';
 import I18nProvider from '../../__i18n__/containers/i18n';
 
-// --------------------- ATTENTION -----------------------------------------
-// It's a hack for full HMR support
-// Current architecture is based on lazy load
-// Page reload for route dependent components was frozen
-// To keep HMR working with frozen page reload for route dependent component
-// such components should be listed here in root component.
-// --------------------- /ATTENTION ----------------------------------------
-import '../../home/containers/home';
-// †module
-
 const Root = ({ store, history, rootRoute }) => {
   return (
-    <AppContainer>
+    <AppContainer warnings={false}>
       <Provider store={store} >
         <I18nProvider>
           <Router

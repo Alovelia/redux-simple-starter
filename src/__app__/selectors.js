@@ -1,13 +1,9 @@
-/**
- * The global state selectors
- */
 import { createSelector } from 'reselect';
-
-// const selectGlobal = state => state.get('global');
 
 export const selectRoute = state => state.get('route');
 export const selectApp = state => state.get('app');
 
+// TODO - add support for permissions and user profile
 // const makeSelectCurrentUser = () => createSelector(
 //   selectGlobal,
 //   globalState => globalState.get('currentUser')

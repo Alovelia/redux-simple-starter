@@ -13,8 +13,8 @@ const initialState = _.fromJS({});
 
 export default handleActions({
   [TYPE.GET_SUCCESS]: (state) => {
-    return state.set('ajaxWorks', true);
-  }
+    return state.set('username', 'username');
+  },
   //†handler
 }, initialState);
 

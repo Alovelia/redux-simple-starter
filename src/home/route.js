@@ -6,35 +6,38 @@ import createReducer from 'app/reducers';
 const { path, name } = routingConfig.home;
 
 export default (store) => {
+  // #if process.env.NODE_ENV === 'production'
+  // in production reducers and sagas will be loaded asynchronously
   // create reusable async injectors using getAsyncInjectors factory
   const { injectReducer, injectSagas } = getAsyncInjectors(store);
+  // #endif
 
   return {
     path,
     name,
+    // #if process.env.NODE_ENV !== 'production'
+    // eslint-disable-next-line
+    component: require('./containers/home').default,
+    // #endif
+    // #if process.env.NODE_ENV === 'production'
     async getComponent(nextState, cb) {
       try {
         const [
           component,
-          // #if process.env.NODE_ENV === 'production'
           reducer,
           sagas
-          // #endif
         ] = await Promise.all([
           import('./containers/home' /* webpackChunkName: "home" */),
-          // #if process.env.NODE_ENV === 'production'
           import('./reducer' /* webpackChunkName: "home" */),
           import('./sagas' /* webpackChunkName: "home" */),
-          // #endif
         ]);
-        // #if process.env.NODE_ENV === 'production'
         injectReducer('home', createReducer, reducer.default);
         injectSagas(sagas.default);
-        // #endif
-        cb(null, component);
+        cb(null, component.default);
       } catch (e) {
         errorLoading(e);
       }
     },
+    // #endif
   };
 };
