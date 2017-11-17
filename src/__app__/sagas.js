@@ -1,5 +1,5 @@
 import { delay } from 'redux-saga';
-import { all, call, spawn } from 'redux-saga/effects';
+import { all, call, fork } from 'redux-saga/effects';
 // #if process.env.NODE_ENV === 'development'
 import homeSagas from '../home/sagas';
 //†import
@@ -8,7 +8,8 @@ import homeSagas from '../home/sagas';
 // https://github.com/redux-saga/redux-saga/issues/760#issuecomment-273737022
 const makeRestartable = (saga) => {
   return function* sagaRunner() {
-    yield spawn(function* restartableSaga() {
+    // yield spawn(function* restartableSaga() {
+    yield fork(function* restartableSaga() {
       while (true) {
         try {
           yield call(saga);
@@ -38,6 +39,7 @@ const rootSagas = [
 
 export default function* root() {
   // https://github.com/redux-saga/redux-saga/issues/1000#issuecomment-303760253
+  // https://github.com/redux-saga/redux-saga/issues/171#issuecomment-345042076
   yield all([
     ...rootSagas.map(saga => call(saga))
   ]);

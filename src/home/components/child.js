@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ChildComponent = () => {
-  return (<div>Child</div>);
+  return (<div>...</div>);
 };
 
 export default ChildComponent;

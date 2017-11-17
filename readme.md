@@ -38,6 +38,12 @@ Redux advanced starter
 5. Component classes should be named as `${moduleName}Component`
 6. Container classes should be named as `${moduleName}Container`
 
+7. .env files
+.env is read by default.
+.env.${NODE_ENV} - next by priority
+to use new variable it should be added to /config/env.js to
+`getClientEnvironment` explicitly
+
 Warnings:
 - Recompose `lifecycle` doesn't persist component `state` in HMR
   but works for `reduxStore`

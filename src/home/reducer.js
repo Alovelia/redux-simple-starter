@@ -12,10 +12,11 @@ export const ACTION = actions(TYPE);
 const initialState = _.fromJS({});
 
 export default handleActions({
-  [TYPE.GET_SUCCESS]: (state) => {
-    return state.set('username', 'username');
-  },
+  [TYPE.GET_SUCCESS]: getSuccess,
   //†handler
 }, initialState);
 
+function getSuccess(state) {
+  return state.set('username', 'username');
+}
 //†reducer
