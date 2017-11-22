@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Layout /> when initializing, the expected output is rendered 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Layout
+    title="_"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": null,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <HelmetWrapper
+          defaultTitle="..."
+          defer={true}
+          encodeSpecialCharacters={true}
+          meta={
+            Array [
+              Object {
+                "content": "...",
+                "name": "description",
+              },
+            ]
+          }
+          titleTemplate="%s"
+        />,
+        <InjectIntl(TitleComponent)
+          id="_"
+        />,
+        <ErrorBoundary
+          FallbackComponent={[Function]}
+        />,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "defaultTitle": "...",
+          "defer": true,
+          "encodeSpecialCharacters": true,
+          "meta": Array [
+            Object {
+              "content": "...",
+              "name": "description",
+            },
+          ],
+          "titleTemplate": "%s",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "id": "_",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": null,
+        "nodeType": "class",
+        "props": Object {
+          "FallbackComponent": [Function],
+          "children": Array [],
+        },
+        "ref": null,
+        "rendered": Array [],
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": null,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <HelmetWrapper
+            defaultTitle="..."
+            defer={true}
+            encodeSpecialCharacters={true}
+            meta={
+              Array [
+                Object {
+                  "content": "...",
+                  "name": "description",
+                },
+              ]
+            }
+            titleTemplate="%s"
+          />,
+          <InjectIntl(TitleComponent)
+            id="_"
+          />,
+          <ErrorBoundary
+            FallbackComponent={[Function]}
+          />,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "defaultTitle": "...",
+            "defer": true,
+            "encodeSpecialCharacters": true,
+            "meta": Array [
+              Object {
+                "content": "...",
+                "name": "description",
+              },
+            ],
+            "titleTemplate": "%s",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "id": "_",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": null,
+          "nodeType": "class",
+          "props": Object {
+            "FallbackComponent": [Function],
+            "children": Array [],
+          },
+          "ref": null,
+          "rendered": Array [],
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

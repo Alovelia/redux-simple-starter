@@ -59,7 +59,7 @@ export const makeSelectLocationState = () => {
 
 export const makeActivePageSelector = () => createSelector(
   selectApp,
-  app => app.get('activePage')
+  app => app && app.get('activePage')
 );
 
 export const makeTitleSelector = () => createSelector(

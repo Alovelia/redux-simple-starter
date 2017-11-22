@@ -9,9 +9,8 @@ export const TYPE = constants('route', [
 export const ACTION = actions(TYPE);
 
 // Initial routing state
-const initialState = _.fromJS({
+export const initialState = _.fromJS({
   locationBeforeTransitions: null,
-  a: 1
 });
 
 /**

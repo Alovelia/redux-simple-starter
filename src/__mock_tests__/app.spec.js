@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { mount, shallow } from 'enzyme';
 import App from './app';
 
+// https://github.com/vjwilson/enzyme-example-jest/blob/master/src/__tests__/Foo-test.js
 /* global it, expect */
 it('renders without crashing', () => {
   const div = document.createElement('div');

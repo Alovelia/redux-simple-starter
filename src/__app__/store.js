@@ -2,19 +2,12 @@ import { createStore, applyMiddleware } from 'redux';
 import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
-/* eslint-disable no-redeclare */
-// #if process.env.NODE_ENV === 'development'
-import { composeWithDevTools } from 'redux-devtools-extension';
-// #endif
-// #if process.env.NODE_ENV !== 'development'
-// using dev-tools in production
-// https://medium.com/@zalmoxis/using-redux-devtools-in-production-4c5b56c5600f
-import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
-// #endif
-/* eslint-enable no-redeclare */
-
 import createReducer from './reducers';
 import sagas from './sagas';
+
+const composeWithDevTools = process.env.NODE_ENV === 'development'
+  ? require('redux-devtools-extension').composeWithDevTools
+  : require('redux-devtools-extension/logOnlyInProduction').composeWithDevTools;
 
 // import { persistState } from 'redux-devtools';
 // import DevTools from '../containers/DevTools';

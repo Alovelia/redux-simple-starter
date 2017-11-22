@@ -10,14 +10,15 @@ export const TYPE = constants('app', [
 export const ACTION = actions(TYPE);
 
 // The initial state of the App
-const initialState = _.fromJS({
-  loading: false,
-  error: false,
-  currentUser: false,
-  userData: {
-    repositories: false,
-  },
-  permissions: [],
+export const initialState = _.fromJS({
+  // TODO update app properties
+  // loading: false,
+  // error: false,
+  // currentUser: false,
+  // userData: {
+  //   repositories: false,
+  // },
+  // permissions: [],
   activePage: {},
 });
 

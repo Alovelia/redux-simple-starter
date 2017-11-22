@@ -10,7 +10,7 @@ export const selectIntl = state => state.get('intl');
  */
 export const makeSelectLanguage = createSelector(
   selectIntl,
-  intl => intl.get('language')
+  intl => intl && intl.get('language')
 );
 
 /**
@@ -18,7 +18,7 @@ export const makeSelectLanguage = createSelector(
  */
 export const makeSelectLocale = () => createSelector(
   selectIntl,
-  intl => intl.get('locale')
+  intl => intl && intl.get('locale')
 );
 
 /**
@@ -27,7 +27,7 @@ export const makeSelectLocale = () => createSelector(
 export const makeSelectMessages = () => createSelector(
   selectIntl,
   (intl) => {
-    const messages = intl.get('messages');
+    const messages = intl && intl.get('messages');
     if (messages) {
       return messages.toJS();
     }

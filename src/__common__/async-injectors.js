@@ -1,3 +1,4 @@
+import createReducer from 'app/reducers'; // horizontal dependency. But it reduces amount of boilerplate
 // #if process.env.NODE_ENV === 'development'
 import conformsTo from 'lodash/fp/conformsTo';
 import isEmpty from 'lodash/fp/isEmpty';
@@ -30,7 +31,7 @@ export function checkStore(store) {
  * Inject an asynchronously loaded reducer
  */
 export function injectAsyncReducer(store) {
-  return function injectReducer(name, createReducer, asyncReducer) {
+  return function injectReducer(name, asyncReducer) {
     // #if process.env.NODE_ENV === 'development'
     invariant(
       isString(name) && !isEmpty(name) && isFunction(asyncReducer),

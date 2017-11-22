@@ -44,6 +44,13 @@ Redux advanced starter
 to use new variable it should be added to /config/env.js to
 `getClientEnvironment` explicitly
 
+8. For testing there are a lot of variants
+The project also works with chai
+https://github.com/astorije/chai-immutable
+https://github.com/domenic/chai-as-promised
+https://github.com/prodatakey/dirty-chai
+https://github.com/domenic/sinon-chai
+
 Warnings:
 - Recompose `lifecycle` doesn't persist component `state` in HMR
   but works for `reduxStore`

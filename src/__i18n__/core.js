@@ -7,7 +7,7 @@ import isIntlLocaleSupported from 'intl-locales-supported';
 * Each function lazy loads scripts related to i18n
 * and messages for particular language.
 * */
-const localeLoaders = {
+export const localeLoaders = {
   en: async () => {
     if (global.Intl && isIntlLocaleSupported('en')) {
       const [locale, messages] = await Promise.all([

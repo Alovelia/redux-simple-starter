@@ -3,11 +3,11 @@ import { createStructuredSelector } from 'reselect';
 import { makeTitleSelector } from '../selectors';
 import Layout from '../components/layout';
 
-const mapStateToProps = createStructuredSelector({
+export const mapStateToProps = createStructuredSelector({
   title: makeTitleSelector()
 });
 
-const mapDispatchToProps = {
+export const mapDispatchToProps = {
   //†action
 };
 

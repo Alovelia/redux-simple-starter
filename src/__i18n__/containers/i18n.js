@@ -17,11 +17,11 @@ export class I18nContainer extends Component {
   }
   async componentWillReceiveProps(newProps) {
     const { locale, updateMessages } = this.props;
-    const { newLocale } = newProps;
+    const { locale: newLocale } = newProps;
 
     // locale was changed - switch language
     if (newLocale && locale && newLocale !== locale) {
-      const messages = await loadLocaleData(locale);
+      const messages = await loadLocaleData(newLocale);
       updateMessages(messages);
     }
   }
