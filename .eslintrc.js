@@ -50,6 +50,10 @@ module.exports = {
     'beforeEach': true,
     'afterEach': true,
     'expect': true,
+    'sinon': true,
+    'shallow': true,
+    'mount': true,
+    'render': true
   },
   'settings': {
     'import/extensions': ['.js', '.jsx'],
