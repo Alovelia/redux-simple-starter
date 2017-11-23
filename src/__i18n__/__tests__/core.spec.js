@@ -1,3 +1,5 @@
+import sinon from 'sinon';
+
 describe('intl core', () => {
   context('localeLoaders', () => {
     let mock;
@@ -44,35 +46,57 @@ describe('intl core', () => {
     });
   });
 
-  // TODO add tests for global.Intl undefined
-  // context('loadLocaleData + isLocaleSupported', () => {
-  //   let mock;
-  //   const messages = [];
-  //   const locale = 'en';
-  //   beforeAll(() => {
-  //     mock = sinon
-  //       .stub(core.localeLoaders, locale)
-  //       .returns(messages);
-  //
-  //   });
-  //   afterAll(() => {
-  //     mock.restore();
-  //   });
-  //
-  //   it('should call localeLoaders', () => {
-  //     const result = core.loadLocaleData(locale);
-  //     expect(mock).to.have.been.called();
-  //     expect(result).to.equal(messages);
-  //   });
-  //
-  //   it('should return true if locale getter is available ', () => {
-  //     const result = core.isLocaleSupported(locale);
-  //     expect(result).to.equal(true);
-  //   });
-  //
-  //   it('should return false if locale getter is not available ', () => {
-  //     const result = core.isLocaleSupported('ru');
-  //     expect(result).to.equal(false);
-  //   });
-  // });
+  context('loadLocaleData + isLocaleSupported', () => {
+    let mock;
+    const messages = [];
+    const locale = 'en';
+    const core = require('../core');
+    beforeAll(() => {
+      mock = sinon
+        .stub(core.localeLoaders, locale)
+        .returns(messages);
+
+    });
+    afterAll(() => {
+      mock.restore();
+    });
+
+    it('should call localeLoaders', () => {
+      const result = core.loadLocaleData(locale);
+      expect(mock).to.have.been.called();
+      expect(result).to.equal(messages);
+    });
+
+    it('should return true if locale getter is available ', () => {
+      const result = core.isLocaleSupported(locale);
+      expect(result).to.equal(true);
+    });
+
+    it('should return false if locale getter is not available ', () => {
+      const result = core.isLocaleSupported('ru');
+      expect(result).to.equal(false);
+    });
+  });
+
+  context('getDefaultLanguage + getLangWithoutRegionCode', () => {
+    const mockNavigatorLanguages = ['en-US', 'ru-RU', 'ru', 'en'];
+    const navigatorLanguages = global.navigator;
+
+    beforeEach(() => {
+      global.navigator = mockNavigatorLanguages;
+    });
+    afterEach(() => {
+      global.navigator = navigatorLanguages;
+    });
+
+    const core = require('../core');
+    it('should return default user language', () => {
+      const result = core.getDefaultLanguage();
+      expect(result).to.equal('en-US');
+    });
+    it('should return default user language - code only', () => {
+      const result = core.getLangWithoutRegionCode('en-US');
+      expect(result).to.equal('en');
+    });
+  });
 });

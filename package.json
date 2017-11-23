@@ -11,7 +11,7 @@
     "test:snapshot": "jest --config=config/jest/conf.json --updateSnapshot",
     "_build": "node scripts/build.js",
     "_build:clean": "rimraf build",
-    "_build:open": "npm-run-all build -p ___build:serve ___build:browser",
+    "_build:open": "n pm-run-all build -p ___build:serve ___build:browser",
     "_coverage": "run-s _coverage:clean ___coverage:build",
     "_coverage:clean": "rimraf coverage",
     "_coverage:open": "npm-run-all _coverage -p ___coverage:serve ___coverage:browser",
