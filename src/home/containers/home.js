@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { ApiError } from 'common/error-core';
+import { lifecycle } from 'recompose';
 import Home from '../components/home';
 import { ACTION } from '../reducer';
 import { makeSelectUsername } from '../selectors';
 
 export class HomeContainer extends Component {
-  componentDidMount() {
-    Promise.reject(new ApiError());
+  componentWillUpdate() {
+    console.info('HMR bugz');
   }
   render() {
     return <Home {...this.props} />;
@@ -25,6 +26,11 @@ export const mapDispatchToProps = {
 };
 
 export default compose(
+  // lifecycle({
+  //   componentDidMount() {
+  //     console.info('HMR bugz');
+  //   }
+  // }),
   connect(mapStateToProps, mapDispatchToProps),
 )(HomeContainer);
 
