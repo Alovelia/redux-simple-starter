@@ -8,7 +8,7 @@ export const selectIntl = state => state.get('intl');
 /**
  * Select main language
  */
-export const makeSelectLanguage = createSelector(
+export const makeSelectLanguage = () => createSelector(
   selectIntl,
   intl => intl && intl.get('language')
 );

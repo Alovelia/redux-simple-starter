@@ -12,7 +12,7 @@ export const HomeComponent = ({
 }) => (<div>
   <button onClick={() => {
     setUpdate(true);
-    trigger();
+    trigger('payload');
   }}
   >
     <FormattedMessage id="home.button-trigger" />
