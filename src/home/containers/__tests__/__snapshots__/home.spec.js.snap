@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LayoutConnected /> has proper component 1`] = `
+exports[`<HomeConnected /> has proper component 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(Layout)
+  Symbol(enzyme.__unrendered__): <Connect(HomeContainer)
     store={
       Object {
         "dispatch": [Function],
@@ -27,9 +27,8 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": null,
-    "nodeType": "function",
+    "nodeType": "class",
     "props": Object {
-      "children": null,
       "store": Object {
         "dispatch": [Function],
         "getAction": [Function],
@@ -59,7 +58,8 @@ ShallowWrapper {
         },
         "unsubscribe": undefined,
       },
-      "title": "home.title",
+      "trigger": [Function],
+      "username": undefined,
     },
     "ref": null,
     "rendered": null,
@@ -69,9 +69,8 @@ ShallowWrapper {
     Object {
       "instance": null,
       "key": null,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
-        "children": null,
         "store": Object {
           "dispatch": [Function],
           "getAction": [Function],
@@ -101,7 +100,8 @@ ShallowWrapper {
           },
           "unsubscribe": undefined,
         },
-        "title": "home.title",
+        "trigger": [Function],
+        "username": undefined,
       },
       "ref": null,
       "rendered": null,

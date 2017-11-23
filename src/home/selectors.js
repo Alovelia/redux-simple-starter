@@ -4,5 +4,5 @@ export const selectHome = state => state.get('home');
 
 export const makeSelectUsername = () => createSelector(
   selectHome,
-  homeState => homeState.get('username')
+  homeState => homeState && homeState.get('username')
 );

@@ -1,5 +1,4 @@
 import React from 'react';
-import { shallowWithIntl } from 'enzyme-react-intl';
 import { createMockStore } from 'redux-test-utils';
 import { fromJS } from 'immutable';
 import LayoutConnected, { mapStateToProps } from '../layout';
@@ -17,7 +16,7 @@ describe('<LayoutConnected />', () => {
       }
     });
     store = createMockStore(initialState);
-    wrapper = shallowWithIntl(<LayoutConnected store={store} />);
+    wrapper = shallow(<LayoutConnected store={store} />);
   });
 
   it('has proper component', () => {
