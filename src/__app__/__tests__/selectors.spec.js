@@ -19,16 +19,50 @@ describe('selectRoute', () => {
     expect(selectRoute(mockedState)).toEqual(routeState);
   });
 });
-// TODO
-// describe('makeSelectUsername', () => {
-//   const usernameSelector = makeSelectUsername();
-//   it('should select the username', () => {
-//     const username = 'username';
-//     const mockedState = fromJS({
-//       home: {
-//         username,
-//       },
-//     });
-//     expect(usernameSelector(mockedState)).toEqual(username);
-//   });
-// });
+
+describe('selectApp', () => {
+  it('should select the app state', () => {
+    const appState = fromJS({
+      activePage: 'home',
+    });
+    const mockedState = fromJS({
+      app: appState,
+    });
+    expect(selectApp(mockedState)).toEqual(appState);
+  });
+});
+
+describe('makeSelectLocationState', () => {
+  const selector = makeSelectLocationState();
+  it('should select the location', () => {
+    const route = { location: 'home' };
+    const mockedState = fromJS({
+      route: fromJS(route),
+    });
+    expect(selector(mockedState)).toEqual(route);
+  });
+});
+
+describe('makeActivePageSelector', () => {
+  const selector = makeActivePageSelector();
+  it('should select activePage', () => {
+    const activePage = { title: 'home' };
+    const app = { activePage };
+    const mockedState = fromJS({
+      app,
+    });
+    expect(selector(mockedState)).to.equal(fromJS(activePage));
+  });
+});
+
+describe('makeTitleSelector', () => {
+  const selector = makeTitleSelector();
+  it('should select title', () => {
+    const title = 'home';
+    const app = { activePage: { title } };
+    const mockedState = fromJS({
+      app,
+    });
+    expect(selector(mockedState)).toEqual(title);
+  });
+});
