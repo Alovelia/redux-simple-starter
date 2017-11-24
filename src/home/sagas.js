@@ -1,7 +1,7 @@
-import { put, select, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 // import { LOCATION_CHANGE } from 'react-router-redux';
+import axios from 'axios';
 import { ACTION, TYPE } from './reducer';
-// import axios from 'axios';
 import { makeSelectUsername } from './selectors';
 
 /**
@@ -13,9 +13,9 @@ export function* getData() {
 
   try {
     // Call ajax
-    // const response = yield call(axios, requestURL);
+    const response = yield call(axios, '/api/mock');
     yield put(ACTION.getSuccess(username));
-    yield put({ type: 'CUEEzzzS' });
+    yield put({ type: 'SOMETHING_ELSE' });
   } catch (err) {
     yield put(ACTION.getError(err));
   }
