@@ -1,7 +1,6 @@
 import { routingConfig } from 'app/routes-config';
 import { errorLoading } from 'common/error-core';
 import { getAsyncInjectors } from 'common/async-injectors';
-import createReducer from 'app/reducers';
 
 const { path, name } = routingConfig.home;
 
@@ -31,7 +30,7 @@ export default (store) => {
           import('./reducer' /* webpackChunkName: "home" */),
           import('./sagas' /* webpackChunkName: "home" */),
         ]);
-        injectReducer('home', createReducer, reducer.default);
+        injectReducer('home', reducer.default);
         injectSagas(sagas.default);
         cb(null, component.default);
       } catch (e) {

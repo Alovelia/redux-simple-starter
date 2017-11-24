@@ -9,6 +9,7 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
+const FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 
@@ -237,6 +238,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new FlowBabelWebpackPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       children: true,

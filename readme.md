@@ -51,6 +51,11 @@ https://github.com/domenic/chai-as-promised
 https://github.com/prodatakey/dirty-chai
 https://github.com/domenic/sinon-chai
 
+9. Flow support
+https://flow.org
+Read how to add WebStorm support
+https://blog.jetbrains.com/webstorm/2016/11/using-flow-in-webstorm/
+
 Warnings:
 - Recompose `lifecycle` doesn't persist component `state` in HMR
   but works for `reduxStore`

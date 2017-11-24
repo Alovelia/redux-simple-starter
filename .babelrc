@@ -1,8 +1,9 @@
 {
-  "presets": ["env", "react", "stage-0"],
+  "presets": ["env", "react", "stage-0", "flow"],
   "env": {
     "production": {
       "plugins": [
+        "transform-flow-comments",
         "ramda",
         ["lodash", { "id": ["lodash", "recompose"] }],
         "add-module-exports",
@@ -17,6 +18,7 @@
     },
     "development": {
       "plugins": [
+        "transform-flow-comments",
         "add-module-exports",
         "transform-promise-to-bluebird",
         "transform-es2015-modules-commonjs",
@@ -26,6 +28,7 @@
     },
     "test": {
       "plugins": [
+        "transform-flow-comments",
         "dynamic-import-node",
         "add-module-exports",
         "transform-promise-to-bluebird",

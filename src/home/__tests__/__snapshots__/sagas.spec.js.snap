@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getRepos Saga should call the getError action if the response errors 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`getRepos Saga should call the getError action if the response errors 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "/api/mock",
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`getRepos Saga should dispatch SOMETHING_ELSE if it requests the data successfully 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`getRepos Saga should dispatch SOMETHING_ELSE if it requests the data successfully 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "/api/mock",
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;
+
+exports[`getRepos Saga should dispatch SOMETHING_ELSE if it requests the data successfully 3`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "PUT": Object {
+    "action": Object {
+      "meta": undefined,
+      "payload": "troll",
+      "type": "home/GET_SUCCESS",
+    },
+    "channel": null,
+  },
+}
+`;
+
+exports[`getRepos Saga should dispatch the getSuccess action if it requests the data successfully 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "SELECT": Object {
+    "args": Array [],
+    "selector": [Function],
+  },
+}
+`;
+
+exports[`getRepos Saga should dispatch the getSuccess action if it requests the data successfully 2`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "CALL": Object {
+    "args": Array [
+      "/api/mock",
+    ],
+    "context": null,
+    "fn": [Function],
+  },
+}
+`;

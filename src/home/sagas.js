@@ -13,6 +13,7 @@ export function* getData() {
 
   try {
     // Call ajax
+    // eslint-disable-next-line
     const response = yield call(axios, '/api/mock');
     yield put(ACTION.getSuccess(username));
     yield put({ type: 'SOMETHING_ELSE' });
