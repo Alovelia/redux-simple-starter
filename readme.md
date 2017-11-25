@@ -56,6 +56,9 @@ https://flow.org
 Read how to add WebStorm support
 https://blog.jetbrains.com/webstorm/2016/11/using-flow-in-webstorm/
 
+10. Error boundary
+https://github.com/bvaughn/react-error-boundary
+
 Warnings:
 - Recompose `lifecycle` doesn't persist component `state` in HMR
   but works for `reduxStore`
