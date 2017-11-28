@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "run-s _coverage:clean _test:coverage _build:clean _build",
+    "gen": "node ./generators/run",
     "flow": "flow",
     "prebuild": "node scripts/prebuild.js",
     "start": "node scripts/start.js",

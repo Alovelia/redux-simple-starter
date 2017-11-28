@@ -1,0 +1,20 @@
+{
+  "name": "inquirer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node run"
+  },
+  "author": "Roman Yudin",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "chalk": "^2.3.0",
+    "co": "^4.6.0",
+    "fs-extra": "^4.0.2",
+    "inquirer": "^4.0.0",
+    "lodash": "^4.17.4"
+  }
+}

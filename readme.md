@@ -59,6 +59,14 @@ https://blog.jetbrains.com/webstorm/2016/11/using-flow-in-webstorm/
 10. Error boundary
 https://github.com/bvaughn/react-error-boundary
 
-Warnings:
+11. Warnings:
 - Recompose `lifecycle` doesn't persist component `state` in HMR
   but works for `reduxStore`
+  
+13. Yeoman:
+- Install `npm install -g yo`
+- Go to `./yo/generator-r`
+- Run `npm install`
+- Run `npm link`
+- Go to root run `yo r`
+- Choose one among available options
