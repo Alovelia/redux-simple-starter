@@ -63,10 +63,8 @@ https://github.com/bvaughn/react-error-boundary
 - Recompose `lifecycle` doesn't persist component `state` in HMR
   but works for `reduxStore`
   
-13. Yeoman:
-- Install `npm install -g yo`
-- Go to `./yo/generator-r`
-- Run `npm install`
-- Run `npm link`
-- Go to root run `yo r`
-- Choose one among available options
+13. Routing issue
+I have an issue at the moment with routes config.
+Such files: require('./containers/d3').default should have at least
+2 exports otherwise such modules will be exported in different format
+and will be invisible.
