@@ -46,10 +46,10 @@ let prompts = {
         //   name: 'Store folder',
         //   value: 'store-folder'
         // },
-        // {
-        //   name: 'Module name: (kebab-case)',
-        //   value: 'module'
-        // },
+        {
+          name: 'Module name: (kebab-case)',
+          value: 'module'
+        },
       ],
       default: 0
     }

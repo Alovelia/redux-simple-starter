@@ -9,10 +9,13 @@ module.exports = {
 
     switch (props.strategy) {
       case 'compile': {
-        let types = await prompt(o.compilationType);
+        let compilationType = await prompt(o.compilationType);
         let inputs = await prompt(o.inputs);
-        let inmodule = await prompt(o.module);
-        return Object.assign(props, types, inputs, inmodule);
+        let inmodule;
+        if (compilationType.compilationType !== 'module') {
+          inmodule = await prompt(o.module);
+        }
+        return Object.assign(props, compilationType, inputs, inmodule);
       }
       case 'inject': {
         let injectionType = await prompt(o.injectionType);

@@ -4,9 +4,6 @@ import axios from 'axios';
 import { ACTION, TYPE } from './reducer';
 import { makeSelectUsername } from './selectors';
 
-/**
- * Github repos request/response handler
- */
 export function* getData() {
   // Select username from store
   const username = yield select(makeSelectUsername());

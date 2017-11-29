@@ -3,10 +3,18 @@ let _ = require('lodash');
 // TODO add tests for these functions
 
 module.exports = _.mixin({
+  camelCaseUpperFirst,
   toConstantFormat,
   toConstantFormatRaw,
   dasherize
 });
+
+function camelCaseUpperFirst(value) {
+  return _.flowRight(
+    _.upperFirst,
+    _.camelCase
+  )(value);
+}
 
 function toConstantFormat(value) {
   return _.flowRight(
