@@ -3,12 +3,9 @@ import { createMockTask } from 'redux-saga/lib/utils';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { ACTION, TYPE } from '../reducer';
 
-// import { LOAD_REPOS } from 'containers/App/constants';
-// import { reposLoaded, repoLoadingError } from 'containers/App/actions';
-
 import { getData, getDataSaga } from '../sagas';
 
-describe('getRepos Saga', () => {
+describe('getData Saga', () => {
   let getDataGenerator;
   const username = 'troll';
   // We have to test twice, once for a successful load and once for an unsuccessful one

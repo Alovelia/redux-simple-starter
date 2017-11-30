@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 // import { compose } from 'redux';
-// import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 class <%=_.camelCaseUpperFirst(name)%>Component extends Component {
   render() {
     return <div>
-      {/*<FormattedMessage id="aaa-bbb._" />*/}
+      <FormattedMessage id="<%=name%>.title" />
     </div>;
   }
 }

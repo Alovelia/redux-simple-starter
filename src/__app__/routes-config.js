@@ -5,7 +5,7 @@ export const routingConfig = {
     path: '/',
     name: 'home',
     title: 'home.title',
-    // permissionId: 'WELCOME',
-  }
+    // permissionId: 'HOME',
+  },
   //†route
 };

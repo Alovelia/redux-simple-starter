@@ -15,14 +15,10 @@ module.exports = {
       replacement: `'<%=_.toConstantFormatRaw(name)%>',`
     },
   ],
-  'route-to-app-route': [
+  'intl-to-main-intl': [
     {
-      cursor: '//†import',
-      replacement: `import <%=_.camelCase(name)%>Route from '../home/<%=name%>';`
-    },
-    {
-      cursor: '//†route',
-      replacement: `<%=_.camelCase(name)%>Route(store),`
+      cursor: '"_": " ",',
+      replacement: `"<%=name%>.title": "<%=_.humanize(name)%>",`
     },
   ],
   'reducer': [
@@ -36,5 +32,46 @@ module.exports = {
     return state;
 }`
     }
+  ],
+  'reducer-to-root-reducer': [
+    {
+      cursor: '//†import',
+      replacement: `import <%=_.camelCase(name)%> from 'src/<%=name%>/reducer';`
+    },
+    {
+      cursor: '//†reducer',
+      replacement: `<%=_.camelCase(name)%>,`
+    },
+  ],
+  'route-to-app-route': [
+    {
+      cursor: '//†import',
+      replacement: `import <%=_.camelCase(name)%>Route from '../<%=name%>';`
+    },
+    {
+      cursor: '//†route',
+      replacement: `<%=_.camelCase(name)%>Route(store),`
+    },
+  ],
+  'route-to-app-route-config': [
+    {
+      cursor: '//†route',
+      replacement: `'<%=name%>': {
+    path: '/<%=name%>',
+    name: '<%=_.camelCase(name)%>',
+    title: '<%=name%>.title',
+    // permissionId: '<%=_.toConstantFormat(name)%>',
+  },`
+    },
+  ],
+  'saga-to-root-saga': [
+    {
+      cursor: '//†import',
+      replacement: `import <%=_.camelCase(name)%>Sagas from '../<%=name%>/sagas';`
+    },
+    {
+      cursor: '//†saga',
+      replacement: `...<%=_.camelCase(name)%>Sagas,`
+    },
   ],
 };

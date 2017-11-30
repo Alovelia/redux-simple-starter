@@ -1,12 +1,14 @@
 let _ = require('lodash');
+let humanize = require('humanize-string');
 
 // TODO add tests for these functions
 
 module.exports = _.mixin({
   camelCaseUpperFirst,
+  dasherize,
+  humanize,
   toConstantFormat,
   toConstantFormatRaw,
-  dasherize
 });
 
 function camelCaseUpperFirst(value) {
