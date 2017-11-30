@@ -9,13 +9,23 @@
  * */
 /* eslint-disable */
 module.exports = {
-  action: [
+  'action': [
     {
       cursor: '//†type',
       replacement: `'<%=_.toConstantFormatRaw(name)%>',`
     },
   ],
-  reducer: [
+  'route-to-app-route': [
+    {
+      cursor: '//†import',
+      replacement: `import <%=_.camelCase(name)%>Route from '../home/<%=name%>';`
+    },
+    {
+      cursor: '//†route',
+      replacement: `<%=_.camelCase(name)%>Route(store),`
+    },
+  ],
+  'reducer': [
     {
       cursor: '//†handler',
       replacement: `[TYPE.<%=_.toConstantFormat(name)%>]: <%=_.camelCase(name)%>,`

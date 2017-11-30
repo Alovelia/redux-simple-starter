@@ -15,7 +15,6 @@ export default function createRoutes(store) {
       component: MainLayout,
       childRoutes: [
         homeRoute(store),
-        //†route
         // {
         //   path: '/features',
         //   name: 'features',

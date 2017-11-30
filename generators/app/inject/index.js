@@ -1,6 +1,5 @@
 let path = require('path'),
   injector = require('./core'),
-  rules = require('./rules'),
   chalk = require('chalk'),
   config = require('../config'),
   _ = require('../utils/mixins');
@@ -11,7 +10,7 @@ async function injectionStrategy(props) {
   switch (props.injectionType) {
     case 'action': {
       await inject({
-        rules: rules.action,
+        rules: 'action',
         fileName: 'action-types',
         wrapperOuter: 'src',
       // ext: '.js',

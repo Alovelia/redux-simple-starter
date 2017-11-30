@@ -7,11 +7,12 @@ let compileTpl = require('./core'),
   path = require('path'),
   _ = require('../utils/mixins'),
   config = require('../../app/config'),
-  { compiler, multiOption } = require('./core');
-  // injectionStrategy = require('../injection');
+  { compiler, multiOption } = require('./core'),
+  { injector } = require('../inject/core');
 
 async function compileStrategy(props) {
   const compile = compiler(props);
+  const inject = injector(props);
 
   switch (props.compilationType) {
     // case 'reducer': {
@@ -90,6 +91,16 @@ async function compileStrategy(props) {
         tmplName: 'module/_sagas.js',
         wrapperOuter: `src/${props.name}`,
         fileName: 'sagas',
+      });
+
+      // INJECT ROUTE TO MAIN ROUTE
+      await inject({
+        rules: 'route-to-app-route',
+        wrapperOuter: `src/__app__`,
+        fileName: `routes`,
+        // ext: '.js',
+        // moduleName: '',
+        // wrapperInner: `store/${props.moduleName}`
       });
 
       break;

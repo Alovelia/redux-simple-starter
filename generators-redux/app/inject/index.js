@@ -11,9 +11,9 @@ async function injectionStrategy(props) {
   switch (props.injectionType) {
     case 'action': {
       await inject({
-        rules: rules.action,
-        fileName: 'action-types',
-        wrapperOuter: 'src',
+        rules: 'action',
+        fileName: `reducer`,
+        wrapperOuter: `src/${props.moduleName}`,
       // ext: '.js',
       // moduleName: '',
       // wrapperInner: `store/${props.moduleName}`

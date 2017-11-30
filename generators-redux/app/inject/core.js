@@ -52,7 +52,6 @@ function makeInjection(content, props) {
       });
     }
   }
-  console.info(props);
   injections.forEach((injection, index) => {
     props.rules.forEach((rule) => {
       let match = rule.cursor;
@@ -73,8 +72,8 @@ function makeInjection(content, props) {
 }
 
 async function injector(props, options) {
-  let settings = Object.assign({}, _, props, options, { rules: rules[props.injectionType] });
+  let settings = Object.assign({}, _, props, options, { rules: rules[options.rules] });
   return injectCode(settings);
 }
 
-module.exports = _.curry(injector);
+exports.injector = _.curry(injector);
