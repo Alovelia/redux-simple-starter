@@ -5,9 +5,9 @@ import { FormattedMessage } from 'react-intl';
 
 class <%=_.camelCaseUpperFirst(name)%>Component extends Component {
   render() {
-    return <div>
+    return (<div>
       <FormattedMessage id="<%=name%>.title" />
-    </div>;
+    </div>);
   }
 }
 

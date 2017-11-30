@@ -46,7 +46,7 @@ module.exports = {
   'route-to-app-route': [
     {
       cursor: '//†import',
-      replacement: `import <%=_.camelCase(name)%>Route from '../<%=name%>';`
+      replacement: `import <%=_.camelCase(name)%>Route from '../<%=name%>/route';`
     },
     {
       cursor: '//†route',

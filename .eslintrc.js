@@ -29,7 +29,8 @@ module.exports = {
     'react/jsx-filename-extension': ['off'],
     'react/forbid-prop-types': ['off'],
     'no-throw-literal': 'error',
-    'no-bitwise': ['off']
+    'no-bitwise': ['off'],
+    'dot-notation': ['off']
   },
   'parserOptions': {
     'ecmaVersion': 6,

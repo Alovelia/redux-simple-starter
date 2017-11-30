@@ -2,7 +2,7 @@ import { routingConfig } from 'app/routes-config';
 import { errorLoading } from 'common/error-core';
 import { getAsyncInjectors } from 'common/async-injectors';
 
-const { path, name } = routingConfig.home;
+const { path, name } = routingConfig['home'];
 
 export default (store) => {
   // #if process.env.NODE_ENV === 'production'

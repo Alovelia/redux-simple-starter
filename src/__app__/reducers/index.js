@@ -11,8 +11,8 @@ import routeReducer from './route-reducer';
 // #if process.env.NODE_ENV === 'development'
 /* eslint-disable import/first */
 import home from 'src/home/reducer';
-/* eslint-enable import/first */
 //†import
+/* eslint-enable import/first */
 
 const devAsyncReducers = {
   home,
