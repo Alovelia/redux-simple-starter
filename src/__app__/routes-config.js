@@ -6,6 +6,6 @@ export const routingConfig = {
     name: 'home',
     title: 'home.title',
     // permissionId: 'WELCOME',
-  }
+  },
   //†route
 };

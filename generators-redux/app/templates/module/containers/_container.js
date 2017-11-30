@@ -10,7 +10,7 @@ import <%=_.camelCaseUpperFirst(name)%> from '../components/<%=name%>';
 
 export class <%=_.camelCaseUpperFirst(name)%>Container extends Component {
   render() {
-    return React.cloneElement(<%=_.camelCaseUpperFirst(name)%>, this.props);
+    return React.createElement(<%=_.camelCaseUpperFirst(name)%>, this.props);
   }
 }
 
