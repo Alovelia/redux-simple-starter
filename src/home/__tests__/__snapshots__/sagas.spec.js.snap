@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`getRepos Saga should call the getError action if the response errors 1`] = `
+exports[`getData Saga should call the getError action if the response errors 1`] = `
 Object {
   "@@redux-saga/IO": true,
   "SELECT": Object {
@@ -10,7 +10,7 @@ Object {
 }
 `;
 
-exports[`getRepos Saga should call the getError action if the response errors 2`] = `
+exports[`getData Saga should call the getError action if the response errors 2`] = `
 Object {
   "@@redux-saga/IO": true,
   "CALL": Object {
@@ -23,7 +23,7 @@ Object {
 }
 `;
 
-exports[`getRepos Saga should dispatch SOMETHING_ELSE if it requests the data successfully 1`] = `
+exports[`getData Saga should dispatch SOMETHING_ELSE if it requests the data successfully 1`] = `
 Object {
   "@@redux-saga/IO": true,
   "SELECT": Object {
@@ -33,7 +33,7 @@ Object {
 }
 `;
 
-exports[`getRepos Saga should dispatch SOMETHING_ELSE if it requests the data successfully 2`] = `
+exports[`getData Saga should dispatch SOMETHING_ELSE if it requests the data successfully 2`] = `
 Object {
   "@@redux-saga/IO": true,
   "CALL": Object {
@@ -46,7 +46,7 @@ Object {
 }
 `;
 
-exports[`getRepos Saga should dispatch SOMETHING_ELSE if it requests the data successfully 3`] = `
+exports[`getData Saga should dispatch SOMETHING_ELSE if it requests the data successfully 3`] = `
 Object {
   "@@redux-saga/IO": true,
   "PUT": Object {
@@ -60,7 +60,7 @@ Object {
 }
 `;
 
-exports[`getRepos Saga should dispatch the getSuccess action if it requests the data successfully 1`] = `
+exports[`getData Saga should dispatch the getSuccess action if it requests the data successfully 1`] = `
 Object {
   "@@redux-saga/IO": true,
   "SELECT": Object {
@@ -70,7 +70,7 @@ Object {
 }
 `;
 
-exports[`getRepos Saga should dispatch the getSuccess action if it requests the data successfully 2`] = `
+exports[`getData Saga should dispatch the getSuccess action if it requests the data successfully 2`] = `
 Object {
   "@@redux-saga/IO": true,
   "CALL": Object {

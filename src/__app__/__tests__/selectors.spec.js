@@ -3,7 +3,6 @@ import { fromJS } from 'immutable';
 import {
   selectRoute,
   selectApp,
-  makeSelectLocationState,
   makeActivePageSelector,
   makeTitleSelector,
 } from '../selectors';
@@ -29,17 +28,6 @@ describe('selectApp', () => {
       app: appState,
     });
     expect(selectApp(mockedState)).toEqual(appState);
-  });
-});
-
-describe('makeSelectLocationState', () => {
-  const selector = makeSelectLocationState();
-  it('should select the location', () => {
-    const route = { location: 'home' };
-    const mockedState = fromJS({
-      route: fromJS(route),
-    });
-    expect(selector(mockedState)).toEqual(route);
   });
 });
 

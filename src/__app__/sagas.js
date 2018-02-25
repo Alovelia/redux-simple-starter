@@ -31,7 +31,7 @@ const rootSagas = [
   // #if process.env.NODE_ENV === 'development'
   // to enable hot module reload sagas should be combined in one place as single process
   // only for development
-  ...homeSagas,
+  homeSagas,
   //†saga
   // #endif
 ].map(makeRestartable);

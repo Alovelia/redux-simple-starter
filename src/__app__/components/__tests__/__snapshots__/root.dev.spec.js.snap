@@ -28,7 +28,7 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "class",
     "props": Object {
       "children": <Provider
@@ -45,11 +45,29 @@ ShallowWrapper {
         }
       >
         <Connect(I18nContainer)>
-          <Router
+          <ConnectedRouter
             history={Object {}}
-            render={[Function]}
-            routes={Array []}
-          />
+          >
+            <Layout
+              title="_"
+            >
+              <Switch>
+                <Route
+                  component={[Function]}
+                  exact={true}
+                  path="/"
+                />
+                <Route
+                  component={[Function]}
+                  path="/features"
+                />
+                <Route
+                  component={[Function]}
+                  path=""
+                />
+              </Switch>
+            </Layout>
+          </ConnectedRouter>
         </Connect(I18nContainer)>
       </Provider>,
       "warnings": false,
@@ -57,15 +75,33 @@ ShallowWrapper {
     "ref": null,
     "rendered": Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "class",
       "props": Object {
         "children": <Connect(I18nContainer)>
-          <Router
+          <ConnectedRouter
             history={Object {}}
-            render={[Function]}
-            routes={Array []}
-          />
+          >
+            <Layout
+              title="_"
+            >
+              <Switch>
+                <Route
+                  component={[Function]}
+                  exact={true}
+                  path="/"
+                />
+                <Route
+                  component={[Function]}
+                  path="/features"
+                />
+                <Route
+                  component={[Function]}
+                  path=""
+                />
+              </Switch>
+            </Layout>
+          </ConnectedRouter>
         </Connect(I18nContainer)>,
         "store": Object {
           "dispatch": [Function],
@@ -80,27 +116,149 @@ ShallowWrapper {
       "ref": null,
       "rendered": Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <Router
+          "children": <ConnectedRouter
             history={Object {}}
-            render={[Function]}
-            routes={Array []}
-          />,
+          >
+            <Layout
+              title="_"
+            >
+              <Switch>
+                <Route
+                  component={[Function]}
+                  exact={true}
+                  path="/"
+                />
+                <Route
+                  component={[Function]}
+                  path="/features"
+                />
+                <Route
+                  component={[Function]}
+                  path=""
+                />
+              </Switch>
+            </Layout>
+          </ConnectedRouter>,
         },
         "ref": null,
         "rendered": Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "children": <Layout
+              title="_"
+            >
+              <Switch>
+                <Route
+                  component={[Function]}
+                  exact={true}
+                  path="/"
+                />
+                <Route
+                  component={[Function]}
+                  path="/features"
+                />
+                <Route
+                  component={[Function]}
+                  path=""
+                />
+              </Switch>
+            </Layout>,
             "history": Object {},
-            "render": [Function],
-            "routes": Array [],
           },
           "ref": null,
-          "rendered": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": <Switch>
+                <Route
+                  component={[Function]}
+                  exact={true}
+                  path="/"
+                />
+                <Route
+                  component={[Function]}
+                  path="/features"
+                />
+                <Route
+                  component={[Function]}
+                  path=""
+                />
+              </Switch>,
+              "title": "_",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/"
+                  />,
+                  <Route
+                    component={[Function]}
+                    path="/features"
+                  />,
+                  <Route
+                    component={[Function]}
+                    path=""
+                  />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "component": [Function],
+                    "exact": true,
+                    "path": "/",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "component": [Function],
+                    "path": "/features",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "component": [Function],
+                    "path": "",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
           "type": [Function],
         },
         "type": [Function],
@@ -112,7 +270,7 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "class",
       "props": Object {
         "children": <Provider
@@ -129,11 +287,29 @@ ShallowWrapper {
           }
         >
           <Connect(I18nContainer)>
-            <Router
+            <ConnectedRouter
               history={Object {}}
-              render={[Function]}
-              routes={Array []}
-            />
+            >
+              <Layout
+                title="_"
+              >
+                <Switch>
+                  <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/"
+                  />
+                  <Route
+                    component={[Function]}
+                    path="/features"
+                  />
+                  <Route
+                    component={[Function]}
+                    path=""
+                  />
+                </Switch>
+              </Layout>
+            </ConnectedRouter>
           </Connect(I18nContainer)>
         </Provider>,
         "warnings": false,
@@ -141,15 +317,33 @@ ShallowWrapper {
       "ref": null,
       "rendered": Object {
         "instance": null,
-        "key": null,
+        "key": undefined,
         "nodeType": "class",
         "props": Object {
           "children": <Connect(I18nContainer)>
-            <Router
+            <ConnectedRouter
               history={Object {}}
-              render={[Function]}
-              routes={Array []}
-            />
+            >
+              <Layout
+                title="_"
+              >
+                <Switch>
+                  <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/"
+                  />
+                  <Route
+                    component={[Function]}
+                    path="/features"
+                  />
+                  <Route
+                    component={[Function]}
+                    path=""
+                  />
+                </Switch>
+              </Layout>
+            </ConnectedRouter>
           </Connect(I18nContainer)>,
           "store": Object {
             "dispatch": [Function],
@@ -164,27 +358,149 @@ ShallowWrapper {
         "ref": null,
         "rendered": Object {
           "instance": null,
-          "key": null,
+          "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <Router
+            "children": <ConnectedRouter
               history={Object {}}
-              render={[Function]}
-              routes={Array []}
-            />,
+            >
+              <Layout
+                title="_"
+              >
+                <Switch>
+                  <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/"
+                  />
+                  <Route
+                    component={[Function]}
+                    path="/features"
+                  />
+                  <Route
+                    component={[Function]}
+                    path=""
+                  />
+                </Switch>
+              </Layout>
+            </ConnectedRouter>,
           },
           "ref": null,
           "rendered": Object {
             "instance": null,
-            "key": null,
+            "key": undefined,
             "nodeType": "class",
             "props": Object {
+              "children": <Layout
+                title="_"
+              >
+                <Switch>
+                  <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/"
+                  />
+                  <Route
+                    component={[Function]}
+                    path="/features"
+                  />
+                  <Route
+                    component={[Function]}
+                    path=""
+                  />
+                </Switch>
+              </Layout>,
               "history": Object {},
-              "render": [Function],
-              "routes": Array [],
             },
             "ref": null,
-            "rendered": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": <Switch>
+                  <Route
+                    component={[Function]}
+                    exact={true}
+                    path="/"
+                  />
+                  <Route
+                    component={[Function]}
+                    path="/features"
+                  />
+                  <Route
+                    component={[Function]}
+                    path=""
+                  />
+                </Switch>,
+                "title": "_",
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <Route
+                      component={[Function]}
+                      exact={true}
+                      path="/"
+                    />,
+                    <Route
+                      component={[Function]}
+                      path="/features"
+                    />,
+                    <Route
+                      component={[Function]}
+                      path=""
+                    />,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "component": [Function],
+                      "exact": true,
+                      "path": "/",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "component": [Function],
+                      "path": "/features",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "component": [Function],
+                      "path": "",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
             "type": [Function],
           },
           "type": [Function],

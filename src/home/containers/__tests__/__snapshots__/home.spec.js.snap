@@ -1,22 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<HomeConnected /> has proper component 1`] = `
+exports[`<HomeContainer /> has proper component 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(HomeContainer)
-    store={
-      Object {
-        "dispatch": [Function],
-        "getAction": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "isActionDispatched": [Function],
-        "isActionTypeDispatched": [Function],
-        "subscribe": [Function],
-      }
-    }
-  />,
+  Symbol(enzyme.__unrendered__): <HomeContainer />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -26,41 +14,9 @@ ShallowWrapper {
   },
   Symbol(enzyme.__node__): Object {
     "instance": null,
-    "key": null,
+    "key": undefined,
     "nodeType": "class",
-    "props": Object {
-      "store": Object {
-        "dispatch": [Function],
-        "getAction": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "isActionDispatched": [Function],
-        "isActionTypeDispatched": [Function],
-        "subscribe": [Function],
-      },
-      "storeSubscription": Subscription {
-        "listeners": Object {
-          "clear": [Function],
-          "get": [Function],
-          "notify": [Function],
-          "subscribe": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "dispatch": [Function],
-          "getAction": [Function],
-          "getActions": [Function],
-          "getState": [Function],
-          "isActionDispatched": [Function],
-          "isActionTypeDispatched": [Function],
-          "subscribe": [Function],
-        },
-        "unsubscribe": undefined,
-      },
-      "trigger": [Function],
-      "username": undefined,
-    },
+    "props": Object {},
     "ref": null,
     "rendered": null,
     "type": [Function],
@@ -68,41 +24,9 @@ ShallowWrapper {
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
-      "key": null,
+      "key": undefined,
       "nodeType": "class",
-      "props": Object {
-        "store": Object {
-          "dispatch": [Function],
-          "getAction": [Function],
-          "getActions": [Function],
-          "getState": [Function],
-          "isActionDispatched": [Function],
-          "isActionTypeDispatched": [Function],
-          "subscribe": [Function],
-        },
-        "storeSubscription": Subscription {
-          "listeners": Object {
-            "clear": [Function],
-            "get": [Function],
-            "notify": [Function],
-            "subscribe": [Function],
-          },
-          "onStateChange": [Function],
-          "parentSub": undefined,
-          "store": Object {
-            "dispatch": [Function],
-            "getAction": [Function],
-            "getActions": [Function],
-            "getState": [Function],
-            "isActionDispatched": [Function],
-            "isActionTypeDispatched": [Function],
-            "subscribe": [Function],
-          },
-          "unsubscribe": undefined,
-        },
-        "trigger": [Function],
-        "username": undefined,
-      },
+      "props": Object {},
       "ref": null,
       "rendered": null,
       "type": [Function],

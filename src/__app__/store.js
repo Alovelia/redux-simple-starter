@@ -62,13 +62,14 @@ export default function configureStore(initialState = {}, history) {
 
   // Extensions
   store.runSaga = sagaMiddleware.run;
-  store.asyncReducers = {}; // Async reducer registry
+  store.injectedReducers = {}; // Reducer registry
+  store.injectedSagas = {}; // Saga registry
 
   // #if process.env.NODE_ENV === 'development'
   // Make reducers hot reloadable, see http://mxs.is/googmo
   const reloadReducers = async () => {
     const createReducers = await import('./reducers');
-    const nextReducers = createReducers(store.asyncReducers);
+    const nextReducers = createReducers(store.injectedReducers);
     store.replaceReducer(nextReducers);
   };
 

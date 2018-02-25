@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { mountWithIntl } from 'enzyme-react-intl';
 import Helmet from 'react-helmet';
-import Title from '../title';
+import Title from '../index';
 
 describe('<Title />', () => {
   let wrapper;

@@ -10,7 +10,7 @@ export const ACTION = actions(TYPE);
 
 // Initial routing state
 export const initialState = _.fromJS({
-  locationBeforeTransitions: null,
+  location: null,
 });
 
 /**
@@ -28,7 +28,7 @@ export default handleActions({
  */
 export function updateLocation(state, { payload }) {
   return state.merge({
-    locationBeforeTransitions: payload,
+    location: payload,
   });
 }
 //†reducer

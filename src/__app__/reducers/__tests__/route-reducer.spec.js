@@ -10,11 +10,9 @@ describe('route reducer', () => {
 
   it(`should handle ${LOCATION_CHANGE}`, () => {
     const payload = Symbol('payload');
-    expect(
-      reducer(initialState, {
-        type: LOCATION_CHANGE,
-        payload
-      }).get('locationBeforeTransitions')
-    ).to.equal(payload);
+    expect(reducer(initialState, {
+      type: LOCATION_CHANGE,
+      payload
+    }).get('location')).to.equal(payload);
   });
 });

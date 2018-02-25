@@ -75,7 +75,7 @@ export function isLocaleSupported(locale) {
 * @returns {string} 'en-US'
 * */
 export function getDefaultLanguage() {
-  let navigator = global.navigator;
+  let { navigator } = global;
   return (navigator.languages && navigator.languages[0])
     || navigator.language
     || navigator.userLanguage;

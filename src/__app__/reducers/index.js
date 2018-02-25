@@ -23,12 +23,12 @@ const devAsyncReducers = {
 /**
  * Creates the main reducer with the asynchronously loaded ones
  */
-export default function createReducer(asyncReducers) {
+export default function createReducer(injectedReducers) {
   return combineReducers({
     route: routeReducer,
     app: appReducer,
     intl: i18nReducer,
-    ...asyncReducers,
+    ...injectedReducers,
 
     // #if process.env.NODE_ENV === 'development'
     ...devAsyncReducers,

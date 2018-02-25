@@ -9,28 +9,28 @@ export const HomeComponent = ({
   trigger,
   setUpdate,
   username,
-}) => (<div>
-  <button onClick={() => {
+}) => (
+  <div>
+    <button onClick={() => {
     setUpdate(true);
     trigger('payload');
   }}
-  >
-    <FormattedMessage id="home.button-trigger" />
-  </button>
-  <FormattedMessage id="home.welcome" /> {username}
-  <Child />
-</div>);
+    >
+      <FormattedMessage id="home.button-trigger" />
+    </button>
+    <FormattedMessage id="home.welcome" /> {username}
+    <Child />
+  </div>
+);
 
 HomeComponent.propTypes = {
   trigger: PropTypes.func.isRequired,
   setUpdate: PropTypes.func.isRequired,
-  username: PropTypes.string
+  username: PropTypes.string,
 };
 
 HomeComponent.defaultProps = {
-  username: ''
+  username: '',
 };
 
-export default compose(
-  withState('update', 'setUpdate', false),
-)(HomeComponent);
+export default compose(withState('update', 'setUpdate', false))(HomeComponent);

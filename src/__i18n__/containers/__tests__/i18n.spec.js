@@ -57,8 +57,9 @@ describe('<I18nContainer />', () => {
     afterAll(() => {
       loadLocaleDataMock.restore();
     });
-    it('should call updateMessages action in componentDidMount', () => {
+    it('should call updateMessages action in componentDidMount', async () => {
       // expect(updateMessages).toHaveBeenCalledWith(messages);
+      await Promise.resolve(); // wait until first promise resolved
       expect(loadLocaleDataMock).to.have.been.called();
       expect(loadLocaleDataMock).to.have.been.calledWith(props.locale);
       expect(updateMessages).to.have.been.called();

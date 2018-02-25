@@ -13,7 +13,7 @@ export function* getData() {
     // eslint-disable-next-line
     const response = yield call(axios, '/api/mock');
     yield put(ACTION.getSuccess(username));
-    yield put({ type: 'SOMETHING_ELSE' });
+    yield put({ type: 'SOMETHING_ELSE1' });
   } catch (err) {
     yield put(ACTION.getError(err));
   }
@@ -35,6 +35,4 @@ export function* getDataSaga() {
 }
 
 // Bootstrap sagas
-export default [
-  getDataSaga,
-];
+export default getDataSaga;

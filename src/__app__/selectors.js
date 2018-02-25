@@ -42,11 +42,6 @@ export const selectApp = state => state.get('app');
 //   );
 // };
 
-export const makeSelectLocationState = () => createSelector(
-  selectRoute,
-  _.toJS
-);
-
 export const makeActivePageSelector = () => createSelector(
   selectApp,
   app => app && app.get('activePage')

@@ -6,7 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import ErrorBoundary from 'react-error-boundary';
-import Title from 'common/title/title';
+import Title from 'common/components/title';
 
 export default function Layout(props) {
   return (
