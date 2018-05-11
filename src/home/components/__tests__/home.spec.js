@@ -1,6 +1,9 @@
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
+import { IntlProvider } from 'react-intl';
 import React from 'react';
 import noop from 'lodash/noop';
+import { Styles } from '../../../client/styles';
+import messages from '../../../__i18n__/en.json';
 import Home from '../home';
 import { ACTION } from '../../reducer';
 
@@ -15,16 +18,37 @@ describe('<Home />', () => {
   });
   it('when initializing, the expected output is rendered', () => {
     const props = {
-      trigger: noop
+      trigger: noop,
     };
     wrapper = shallow(<Home {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
   it('should trigger action', () => {
     const props = {
-      trigger: stub
+      trigger: stub,
     };
-    shallow(<Home {...props} />).dive().find('button').simulate('click');
+
+    // console.error(
+    //   shallow(
+    //     <Styles>
+    //       <IntlProvider locale="en" messages={messages}>
+    //         <Home {...props} />
+    //       </IntlProvider>
+    //     </Styles>,
+    //   )
+    //     .dive()
+    //     .html(),
+    // );
+
+    mount(
+      <Styles>
+        <IntlProvider locale="en" messages={messages}>
+          <Home {...props} />
+        </IntlProvider>
+      </Styles>,
+    )
+      .find('button')
+      .simulate('click');
     expect(stub).to.have.been.called();
     expect(stub).to.have.been.calledWith('payload');
   });

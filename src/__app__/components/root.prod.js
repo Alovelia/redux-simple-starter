@@ -7,9 +7,9 @@ import I18nProvider from 'src/__i18n__/containers/i18n';
 import Home from 'src/home/loadable';
 import Layout from './layout';
 
-const Root = ({ store, history, rootRoute }) => {
+const Root = ({ store, history }) => {
   return (
-    <Provider store={store} >
+    <Provider store={store}>
       <I18nProvider>
         <ConnectedRouter history={history}>
           <Layout>
@@ -28,7 +28,6 @@ const Root = ({ store, history, rootRoute }) => {
 Root.propTypes = {
   store: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  rootRoute: PropTypes.array.isRequired
 };
 
 export default Root;

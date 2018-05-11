@@ -3,6 +3,11 @@
   "env": {
     "production": {
       "plugins": [
+        ["babel-plugin-styled-components", {
+          "ssr": true,
+          "minify": false,
+          "transpileTemplateLiterals": false
+        }],
         "transform-flow-comments",
         "ramda",
         ["lodash", { "id": ["lodash", "recompose"] }],
@@ -18,6 +23,12 @@
     },
     "development": {
       "plugins": [
+        ["babel-plugin-styled-components", {
+          "ssr": true,
+          "minify": false,
+          "transpileTemplateLiterals": false,
+          "displayName": true
+        }],
         "transform-flow-comments",
         "add-module-exports",
         "transform-promise-to-bluebird",

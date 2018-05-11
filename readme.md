@@ -1,5 +1,29 @@
 Redux advanced starter
 
+###Gitflow
+We are working with Gitflow on the project.
+It is required to use read it if you're not familiar with
+this approach.
+
+* [What is Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+* [Gitflow vs Git](https://gist.github.com/JamesMGreene/cdd0ac49f90c987e45ac)
+* [About Merge with --no-ff option](https://stackoverflow.com/questions/9069061/what-is-the-difference-between-git-merge-and-git-merge-no-ff)
+
+####Gitflow commands
+* `git flow feature start feature-name` - start work
+* `git flow feature publish feature-name` - push to server
+* `git flow feature finish feature-name` - merge to `develop`
+ (it should be done only after pull request approval)
+ * `git flow bugfix start bug-name`
+ * `git flow bugfix publish bug-name`
+ * `git flow bugfix finish bug-name`
+
+###Git commit messages
+* [Best practices](https://chris.beams.io/posts/git-commit/)
+* [Some examples](https://wiki.openstack.org/wiki/GitCommitMessages)
+* [Some recommendations](https://github.com/erlang/otp/wiki/writing-good-commit-messages)
+
+
 1. Yarn commands
 - `yarn start` - runs application
 - `yarn test:snapshot` - to create snapshots for your components.

@@ -5,9 +5,11 @@ import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 import sagas from './sagas';
 
-const composeWithDevTools = process.env.NODE_ENV === 'development'
-  ? require('redux-devtools-extension').composeWithDevTools
-  : require('redux-devtools-extension/logOnlyInProduction').composeWithDevTools;
+const composeWithDevTools =
+  process.env.NODE_ENV === 'development'
+    ? require('redux-devtools-extension').composeWithDevTools
+    : require('redux-devtools-extension/logOnlyInProduction')
+        .composeWithDevTools;
 
 // import { persistState } from 'redux-devtools';
 // import DevTools from '../containers/DevTools';
@@ -21,10 +23,7 @@ export default function configureStore(initialState = {}, history) {
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
-  const middlewares = [
-    sagaMiddleware,
-    routerMiddleware(history),
-  ];
+  const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
   const composeEnhancers = composeWithDevTools({
     // Specify name here, actionsBlacklist, actionsCreators and other options if needed
@@ -48,7 +47,7 @@ export default function configureStore(initialState = {}, history) {
     // https://github.com/elgerlambert/redux-localstorage/blob/master/src/persistState.js
     // loadState() || initialState // load from localStorage
     fromJS(initialState),
-    composeEnhancers(...enhancers)
+    composeEnhancers(...enhancers),
   );
 
   // substribe localStorage save method to state change event

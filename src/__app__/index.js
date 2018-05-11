@@ -24,6 +24,9 @@ import Root from './components/root';
 
 import configureStore from './store';
 
+// Import styles
+import { Styles } from '../client/styles';
+
 // Listen to uncaught errors and unhandled promises
 handleGlobalErrors();
 
@@ -36,13 +39,12 @@ const store = configureStore(initialState, history);
 
 const MOUNT_NODE = document.getElementById('root');
 
-const renderApp = (App) => {
+const renderApp = App => {
   ReactDOM.render(
-    <App
-      store={store}
-      history={history}
-    />,
-    MOUNT_NODE
+    <Styles>
+      <App store={store} history={history} />
+    </Styles>,
+    MOUNT_NODE,
   );
 };
 

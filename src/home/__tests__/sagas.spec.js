@@ -1,6 +1,7 @@
-import { cancel, take, put, takeLatest } from 'redux-saga/effects';
-import { createMockTask } from 'redux-saga/lib/utils';
-import { LOCATION_CHANGE } from 'react-router-redux';
+// import { cancel, take, put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
+// import { createMockTask } from 'redux-saga/lib/utils';
+// import { LOCATION_CHANGE } from 'react-router-redux';
 import { ACTION, TYPE } from '../reducer';
 
 import { getData, getDataSaga } from '../sagas';
@@ -22,12 +23,11 @@ describe('getData Saga', () => {
 
   it('should dispatch the getSuccess action if it requests the data successfully', () => {
     const response = {
-      username
+      username,
     };
     const putDescriptor = getDataGenerator.next(response).value;
     expect(putDescriptor).toEqual(put(ACTION.getSuccess(username)));
   });
-
 
   it('should dispatch SOMETHING_ELSE if it requests the data successfully', () => {
     const somethingElseDescriptor = getDataGenerator.next().value;
@@ -43,7 +43,7 @@ describe('getData Saga', () => {
 
 describe('getDataSaga Saga', () => {
   const getDataSagaGenerator = getDataSaga();
-  const mockedTask = createMockTask();
+  // const mockedTask = createMockTask();
 
   it(`should start task to watch for ${TYPE.GET} action`, () => {
     const takeLatestDescriptor = getDataSagaGenerator.next().value;

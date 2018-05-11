@@ -6,7 +6,7 @@ import homeSagas from '../home/sagas';
 // #endif
 
 // https://github.com/redux-saga/redux-saga/issues/760#issuecomment-273737022
-const makeRestartable = (saga) => {
+const makeRestartable = saga => {
   return function* sagaRunner() {
     // yield spawn(function* restartableSaga() {
     yield fork(function* restartableSaga() {
@@ -15,7 +15,9 @@ const makeRestartable = (saga) => {
           yield call(saga);
           // eslint-disable-next-line
           console.error('unexpected root saga termination. ' +
-            'The root sagas are supposed to be sagas that live during the whole app lifetime!', saga);
+              'The root sagas are supposed to be sagas that live during the whole app lifetime!',
+            saga,
+          );
         } catch (e) {
           // eslint-disable-next-line
           console.error('Saga error, the saga will be restarted', e);
@@ -26,7 +28,6 @@ const makeRestartable = (saga) => {
   };
 };
 
-
 const rootSagas = [
   // #if process.env.NODE_ENV === 'development'
   // to enable hot module reload sagas should be combined in one place as single process
@@ -36,11 +37,8 @@ const rootSagas = [
   // #endif
 ].map(makeRestartable);
 
-
 export default function* root() {
   // https://github.com/redux-saga/redux-saga/issues/1000#issuecomment-303760253
   // https://github.com/redux-saga/redux-saga/issues/171#issuecomment-345042076
-  yield all([
-    ...rootSagas.map(saga => call(saga))
-  ]);
+  yield all([...rootSagas.map(saga => call(saga))]);
 }

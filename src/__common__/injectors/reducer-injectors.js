@@ -6,18 +6,21 @@ import createReducer from 'app/reducers';
 
 import checkStore from './check-store';
 
-
 export function injectReducerFactory(store, isValid) {
   return function injectReducer(key, reducer) {
     if (!isValid) checkStore(store);
 
     invariant(
       isString(key) && !isEmpty(key) && isFunction(reducer),
-      '(common/injectors...) injectReducer: Expected `reducer` to be a reducer function'
+      '(common/injectors...) injectReducer: Expected `reducer` to be a reducer function',
     );
 
     // Check `store.injectedReducers[key] === reducer` for hot reloading when a key is the same but a reducer is different
-    if (Reflect.has(store.injectedReducers, key) && store.injectedReducers[key] === reducer) return;
+    if (
+      Reflect.has(store.injectedReducers, key) &&
+      store.injectedReducers[key] === reducer
+    )
+      return;
 
     store.injectedReducers[key] = reducer; // eslint-disable-line no-param-reassign
     store.replaceReducer(createReducer(store.injectedReducers));

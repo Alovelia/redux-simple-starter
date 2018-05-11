@@ -16,10 +16,13 @@ export const initialState = _.fromJS({
 /**
  * Merge route into the global application state
  */
-export default handleActions({
-  [LOCATION_CHANGE]: updateLocation,
-  //†handler
-}, initialState);
+export default handleActions(
+  {
+    [LOCATION_CHANGE]: updateLocation,
+    //†handler
+  },
+  initialState,
+);
 
 /*
  * routeReducer

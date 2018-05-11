@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import _ from 'common/helpers';
+// import _ from 'common/helpers';
 
 export const selectRoute = state => state.get('route');
 export const selectApp = state => state.get('app');
@@ -42,16 +42,12 @@ export const selectApp = state => state.get('app');
 //   );
 // };
 
-export const makeActivePageSelector = () => createSelector(
-  selectApp,
-  app => app && app.get('activePage')
-);
+export const makeActivePageSelector = () =>
+  createSelector(selectApp, app => app && app.get('activePage'));
 
-export const makeTitleSelector = () => createSelector(
-  makeActivePageSelector(),
-  (activePage) => {
+export const makeTitleSelector = () =>
+  createSelector(makeActivePageSelector(), activePage => {
     if (activePage) {
       return activePage.get('title');
     }
-  }
-);
+  });

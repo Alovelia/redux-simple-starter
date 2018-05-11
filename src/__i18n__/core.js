@@ -12,43 +12,43 @@ export const localeLoaders = {
     if (global.Intl && isIntlLocaleSupported('en')) {
       const [locale, messages] = await Promise.all([
         import('react-intl/locale-data/en' /* webpackChunkName: "intl-locale-en" */),
-        import('./en.json' /* webpackChunkName: "locale-en" */)
+        import('./en.json' /* webpackChunkName: "locale-en" */),
       ]);
       addLocaleData(locale);
       return messages;
     }
     // polyfill for old browsers
     const [, locale, messages] = await Promise.all([
-        import('intl' /* webpackChunkName: "intl-polyfill" */),
-        import('react-intl/locale-data/en' /* webpackChunkName: "intl-locale-en" */),
-        import('./en.json' /* webpackChunkName: "locale-en" */)
+      import('intl' /* webpackChunkName: "intl-polyfill" */),
+      import('react-intl/locale-data/en' /* webpackChunkName: "intl-locale-en" */),
+      import('./en.json' /* webpackChunkName: "locale-en" */),
     ]);
     await import('intl/locale-data/jsonp/en-GB' /* webpackChunkName: "intl-polyfill" */);
     addLocaleData(locale);
     return messages;
   },
   // to add another language - uncomment the next block
-//   de: async () => {
-//     if (global.Intl && isIntlLocaleSupported('de')) {
-//       const [locale, messages] = await Promise.all([
-//         import('react-intl/locale-data/de' /* webpackChunkName: "intl-locale-de" */),
-//         import('./de.json' /* webpackChunkName: "locale-de" */),
-//         import('moment/locale/de' /* webpackChunkName: "intl-locale-de" */)
-//       ]);
-//       addLocaleData(locale);
-//       return messages;
-//     }
-//     // polyfill for old browsers
-//     const [, locale, messages] = await Promise.all([
-//         import('intl' /* webpackChunkName: "intl-polyfill" */),
-//         import('react-intl/locale-data/de' /* webpackChunkName: "intl-locale-en" */),
-//         import('./de.json' /* webpackChunkName: "locale-de" */),
-//         import('moment/locale/de' /* webpackChunkName: "intl-locale-en" */)
-//     ]);
-//     await import('intl/locale-data/jsonp/de' /* webpackChunkName: "intl-polyfill" */);
-//     addLocaleData(locale);
-//     return messages;
-//   },
+  //   de: async () => {
+  //     if (global.Intl && isIntlLocaleSupported('de')) {
+  //       const [locale, messages] = await Promise.all([
+  //         import('react-intl/locale-data/de' /* webpackChunkName: "intl-locale-de" */),
+  //         import('./de.json' /* webpackChunkName: "locale-de" */),
+  //         import('moment/locale/de' /* webpackChunkName: "intl-locale-de" */)
+  //       ]);
+  //       addLocaleData(locale);
+  //       return messages;
+  //     }
+  //     // polyfill for old browsers
+  //     const [, locale, messages] = await Promise.all([
+  //         import('intl' /* webpackChunkName: "intl-polyfill" */),
+  //         import('react-intl/locale-data/de' /* webpackChunkName: "intl-locale-en" */),
+  //         import('./de.json' /* webpackChunkName: "locale-de" */),
+  //         import('moment/locale/de' /* webpackChunkName: "intl-locale-en" */)
+  //     ]);
+  //     await import('intl/locale-data/jsonp/de' /* webpackChunkName: "intl-polyfill" */);
+  //     addLocaleData(locale);
+  //     return messages;
+  //   },
 };
 
 /*
@@ -76,9 +76,11 @@ export function isLocaleSupported(locale) {
 * */
 export function getDefaultLanguage() {
   let { navigator } = global;
-  return (navigator.languages && navigator.languages[0])
-    || navigator.language
-    || navigator.userLanguage;
+  return (
+    (navigator.languages && navigator.languages[0]) ||
+    navigator.language ||
+    navigator.userLanguage
+  );
 }
 
 /*

@@ -238,7 +238,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new FlowBabelWebpackPlugin(),
+    // new FlowBabelWebpackPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       children: true,

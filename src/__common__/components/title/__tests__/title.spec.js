@@ -1,13 +1,14 @@
 import React from 'react';
-import { mount } from 'enzyme';
+// import { mount } from 'enzyme';
 import { mountWithIntl } from 'enzyme-react-intl';
 import Helmet from 'react-helmet';
 import Title from '../index';
 
 describe('<Title />', () => {
-  let wrapper;
+  // let wrapper;
   beforeAll(() => {
-    wrapper = mountWithIntl(<Title id="home.title" />);
+    // wrapper = mountWithIntl(<Title id="home.title" />);
+    mountWithIntl(<Title id="home.title" />);
   });
 
   it('should update browser title', () => {

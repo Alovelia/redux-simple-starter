@@ -11,9 +11,9 @@ describe('<LayoutConnected />', () => {
     const initialState = fromJS({
       app: {
         activePage: {
-          title: APP_TITLE
-        }
-      }
+          title: APP_TITLE,
+        },
+      },
     });
     store = createMockStore(initialState);
     wrapper = shallow(<LayoutConnected store={store} />);
@@ -27,13 +27,13 @@ describe('<LayoutConnected />', () => {
     const initialState = fromJS({
       app: {
         activePage: {
-          title: APP_TITLE
-        }
-      }
+          title: APP_TITLE,
+        },
+      },
     });
 
     expect(mapStateToProps(initialState)).to.deep.equal({
-      title: APP_TITLE
+      title: APP_TITLE,
     });
   });
 });

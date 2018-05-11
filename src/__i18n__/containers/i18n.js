@@ -12,7 +12,6 @@ import { ACTION } from '../reducer';
 export class I18nContainer extends Component {
   async componentDidMount() {
     const { locale, updateMessages } = this.props;
-    console.error('1111');
     const messages = await loadLocaleData(locale);
     updateMessages(messages);
   }
@@ -31,15 +30,11 @@ export class I18nContainer extends Component {
   render() {
     const { messages, locale, children } = this.props;
     /* eslint-disable react/jsx-closing-tag-location */
-    return !_.isEmpty(messages)
-      ? <IntlProvider
-        messages={messages}
-        locale={locale}
-        key={locale}
-      >
+    return !_.isEmpty(messages) ? (
+      <IntlProvider messages={messages} locale={locale} key={locale}>
         {children}
       </IntlProvider>
-      : null;
+    ) : null;
   }
 }
 
@@ -59,7 +54,6 @@ const mapDispatchToProps = {
   //†actions
 };
 
-export default compose(connect(
-  mapStateToProps,
-  mapDispatchToProps
-))(I18nContainer);
+export default compose(connect(mapStateToProps, mapDispatchToProps))(
+  I18nContainer,
+);

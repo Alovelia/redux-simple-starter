@@ -5,6 +5,7 @@ module.exports = {
     'airbnb',
     'plugin:import/errors',
     'plugin:import/warnings',
+    'prettier'
   ],
   'parser': 'babel-eslint',
   'rules': {
@@ -30,7 +31,8 @@ module.exports = {
     'react/forbid-prop-types': ['off'],
     'no-throw-literal': 'error',
     'no-bitwise': ['off'],
-    'dot-notation': ['off']
+    'dot-notation': ['off'],
+    'prettier/prettier': ['error']
   },
   'parserOptions': {
     'ecmaVersion': 6,
@@ -54,7 +56,8 @@ module.exports = {
     'sinon': true,
     'shallow': true,
     'mount': true,
-    'render': true
+    'render': true,
+    'jest': true,
   },
   'settings': {
     'import/extensions': ['.js', '.jsx'],
@@ -80,6 +83,7 @@ module.exports = {
     }
   },
   plugins: [
+    'prettier',
     'import'
   ]
 };

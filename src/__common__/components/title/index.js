@@ -14,9 +14,7 @@ import { injectIntl } from 'react-intl';
 export function TitleComponent(props) {
   return (
     <Helmet>
-      <title>
-        {props.intl.formatMessage({ id: props.id })}
-      </title>
+      <title>{props.intl.formatMessage({ id: props.id })}</title>
     </Helmet>
   );
 }

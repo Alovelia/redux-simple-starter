@@ -1,11 +1,14 @@
 import React from 'react';
-import { shallowWithIntl } from 'enzyme-react-intl';
-import { shallow, mount } from 'enzyme';
-import { createMockStore } from 'redux-test-utils';
-import { fromJS } from 'immutable';
+// import { shallowWithIntl } from 'enzyme-react-intl';
+// import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
+// import { createMockStore } from 'redux-test-utils';
+// import { fromJS } from 'immutable';
 import sinon from 'sinon';
-import { FormattedMessage, defineMessages } from 'react-intl';
-import I18nConected, { I18nContainer } from '../i18n';
+// import { FormattedMessage, defineMessages } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
+// import I18nConected, { I18nContainer } from '../i18n';
+import { I18nContainer } from '../i18n';
 import * as localeCore from '../../core';
 
 describe('<I18nContainer />', () => {
@@ -18,7 +21,7 @@ describe('<I18nContainer />', () => {
       const props = {
         messages: {},
         locale: 'en',
-        updateMessages
+        updateMessages,
       };
       loadLocaleDataMock = sinon
         .stub(localeCore, 'loadLocaleData')
@@ -36,7 +39,7 @@ describe('<I18nContainer />', () => {
   });
 
   context('when just mounted', () => {
-    let wrapper;
+    // let wrapper;
     let loadLocaleDataMock;
     // const updateMessages = jest.fn();
     const updateMessages = sinon.spy();
@@ -45,7 +48,7 @@ describe('<I18nContainer />', () => {
     const props = {
       messages: {},
       locale: 'en',
-      updateMessages
+      updateMessages,
     };
     beforeAll(() => {
       loadLocaleDataMock = sinon
@@ -77,13 +80,17 @@ describe('<I18nContainer />', () => {
     const props = {
       messages,
       locale: 'en',
-      updateMessages
+      updateMessages,
     };
     beforeAll(() => {
       loadLocaleDataMock = sinon
         .stub(localeCore, 'loadLocaleData')
         .returns(Promise.resolve(messages));
-      wrapper = shallow(<I18nContainer {...props}><FormattedMessage id="id" /></I18nContainer>);
+      wrapper = shallow(
+        <I18nContainer {...props}>
+          <FormattedMessage id="id" />
+        </I18nContainer>,
+      );
     });
 
     afterAll(() => {
@@ -106,12 +113,12 @@ describe('<I18nContainer />', () => {
     const props = {
       messages,
       locale: 'en',
-      updateMessages
+      updateMessages,
     };
     const newProps = {
       messages: { id: 'тест' },
       locale: 'ru',
-      updateMessages
+      updateMessages,
     };
     beforeAll(() => {
       loadLocaleDataMock = sinon
@@ -128,11 +135,19 @@ describe('<I18nContainer />', () => {
     it('should render proper message', async () => {
       sinon.spy(I18nContainer.prototype, 'componentDidMount');
       sinon.spy(I18nContainer.prototype, 'componentWillReceiveProps');
-      wrapper = shallow(<I18nContainer {...props}><FormattedMessage id="id" /></I18nContainer>);
-      expect(I18nContainer.prototype.componentDidMount.calledOnce).to.equal(true);
+      wrapper = shallow(
+        <I18nContainer {...props}>
+          <FormattedMessage id="id" />
+        </I18nContainer>,
+      );
+      expect(I18nContainer.prototype.componentDidMount.calledOnce).to.equal(
+        true,
+      );
       await wrapper.setProps(newProps);
       // wrapper.update();
-      expect(I18nContainer.prototype.componentWillReceiveProps.calledOnce).to.equal(true);
+      expect(
+        I18nContainer.prototype.componentWillReceiveProps.calledOnce,
+      ).to.equal(true);
       expect(loadLocaleDataMock).to.have.been.called();
       // expect(loadLocaleDataMock).to.have.been.calledTwice();
       expect(loadLocaleDataMock).to.have.been.callCount(2);

@@ -32,7 +32,7 @@ export class CustomError extends ExtendableError {
 * */
 export function listenGlobalPromiseRejections() {
   if (typeof window === 'object') {
-    window.addEventListener('unhandledrejection', (event) => {
+    window.addEventListener('unhandledrejection', event => {
       // Prevent error output on the console:
       event.preventDefault();
       console.groupCollapsed('Unhandled Rejection');
@@ -64,17 +64,19 @@ export function listenGlobalPromiseRejections() {
 export function listenGlobalExceptions() {
   if (typeof window === 'object') {
     window.onerror = (msg, url, lineNo, columnNo, error) => {
-
       if (process.env.NODE_ENV === 'production') {
         // https://www.stacktracejs.com/#!/docs/stacktrace-js
-        StackTrace.fromError(error).then((stackframes) => {
-          StackTrace.report(stackframes, '/errorlog', 'error message')
-            .catch(() => {
-              // console.log('EPIC FAIL');
-            });
-        }).catch(() => {
-          // console.log('EPIC FAIL', err);
-        });
+        StackTrace.fromError(error)
+          .then(stackframes => {
+            StackTrace.report(stackframes, '/errorlog', 'error message').catch(
+              () => {
+                // console.log('EPIC FAIL');
+              },
+            );
+          })
+          .catch(() => {
+            // console.log('EPIC FAIL', err);
+          });
 
         let string = msg.toLowerCase();
         let substring = 'script error';
@@ -83,7 +85,10 @@ export function listenGlobalExceptions() {
         } else {
           console.groupCollapsed('%cError', 'color:red');
           console.log(`%cMessage: ${msg}`.padEnd(16), 'color:red');
-          console.log(`%cUrl: ${url}:${lineNo}:${columnNo}`.padEnd(16), 'color:red');
+          console.log(
+            `%cUrl: ${url}:${lineNo}:${columnNo}`.padEnd(16),
+            'color:red',
+          );
           console.error(error.stack);
           console.groupEnd();
         }

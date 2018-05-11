@@ -16,12 +16,14 @@ export const initialState = _.fromJS({
   messages: {},
 });
 
-export default handleActions({
-  [TYPE.UPDATE_LOCALE]: updateLocale,
-  [TYPE.UPDATE_MESSAGES]: updateMessages,
-  //†handler
-}, initialState);
-
+export default handleActions(
+  {
+    [TYPE.UPDATE_LOCALE]: updateLocale,
+    [TYPE.UPDATE_MESSAGES]: updateMessages,
+    //†handler
+  },
+  initialState,
+);
 
 export function updateLocale(state, { payload }) {
   return state.set('locale', payload);

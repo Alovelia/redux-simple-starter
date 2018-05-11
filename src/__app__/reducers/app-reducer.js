@@ -22,17 +22,21 @@ export const initialState = _.fromJS({
   activePage: {},
 });
 
-export default handleActions({
-  [LOCATION_CHANGE]: updateLocation,
-  //†handler
-}, initialState);
+export default handleActions(
+  {
+    [LOCATION_CHANGE]: updateLocation,
+    //†handler
+  },
+  initialState,
+);
 
 /*
 * It's important part - here routing information is set
 * This data is used by Helmet to update document.title
 * */
 export function updateLocation(state, { payload }) {
-  const currentPage = routingConfig[payload.pathname.slice(1) || DEFAULT_PAGE] || {};
+  const currentPage =
+    routingConfig[payload.pathname.slice(1) || DEFAULT_PAGE] || {};
   return state.set('activePage', _.fromJS(currentPage));
 }
 //†reducer

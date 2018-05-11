@@ -1,5 +1,6 @@
-import { is, fromJS } from 'immutable';
-import reducer, { ACTION, TYPE, initialState } from '../reducer';
+// import { is, fromJS } from 'immutable';
+// import reducer, { ACTION, TYPE, initialState } from '../reducer';
+import reducer, { TYPE, initialState } from '../reducer';
 
 describe('home reducer', () => {
   it('should return the initial state', () => {
@@ -11,8 +12,8 @@ describe('home reducer', () => {
     expect(
       reducer(initialState, {
         type: TYPE.GET_SUCCESS,
-        payload: undefined
-      }).get('username')
+        payload: undefined,
+      }).get('username'),
     ).to.equal('username');
   });
 });

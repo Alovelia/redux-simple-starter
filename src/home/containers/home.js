@@ -21,7 +21,7 @@ export class HomeContainer extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  username: makeSelectUsername()
+  username: makeSelectUsername(),
 });
 const mapDispatchToProps = {
   trigger: ACTION.get,

@@ -1,11 +1,12 @@
+// import { fromJS, is } from 'immutable';
+import { fromJS } from 'immutable';
 import _ from '../helpers';
-import { fromJS, is } from 'immutable';
 
 describe('helpers', () => {
   describe('fromJS and toJS', () => {
-    let obj,
-      left,
-      right;
+    let obj;
+    let left;
+    let right;
     beforeAll(() => {
       obj = { a: 1 };
       left = _.fromJS(obj);

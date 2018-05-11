@@ -6,7 +6,7 @@ import { fromJS } from 'immutable';
 import { CustomError } from 'common/error-core';
 
 const isFunction = R.is(Function);
-const toJS = (o) => {
+const toJS = o => {
   if (isFunction(o.toJS)) {
     return o.toJS();
   }
@@ -20,5 +20,5 @@ export default {
   isFunction,
   flatten: _.flatten,
   fromJS,
-  toJS
+  toJS,
 };

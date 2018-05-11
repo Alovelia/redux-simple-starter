@@ -1,19 +1,21 @@
 import sinon from 'sinon';
 
+/* eslint-disable global-require */
+
 describe('intl core', () => {
   context('localeLoaders', () => {
-    let mock;
-    const messages = [];
+    // let mock;
+    // const messages = [];
     const locale = 'en';
     const intlLocalesMock = jest.fn();
     const addLocaleDataMock = jest.fn();
     const localeDefaultMock = {
       __esModule: true,
-      default: locale
+      default: locale,
     };
     const messagesDefaultMock = {
       __esModule: true,
-      default: 'messages'
+      default: 'messages',
     };
 
     beforeEach(() => {
@@ -23,10 +25,10 @@ describe('intl core', () => {
     beforeAll(() => {
       jest.doMock('intl-locales-supported', () => ({
         __esModule: true,
-        default: intlLocalesMock
+        default: intlLocalesMock,
       }));
       jest.doMock('react-intl', () => ({
-        addLocaleData: addLocaleDataMock
+        addLocaleData: addLocaleDataMock,
       }));
       jest.doMock('../en.json', () => messagesDefaultMock);
       jest.doMock('react-intl/locale-data/en', () => localeDefaultMock);
@@ -52,10 +54,7 @@ describe('intl core', () => {
     const locale = 'en';
     const core = require('../core');
     beforeAll(() => {
-      mock = sinon
-        .stub(core.localeLoaders, locale)
-        .returns(messages);
-
+      mock = sinon.stub(core.localeLoaders, locale).returns(messages);
     });
     afterAll(() => {
       mock.restore();

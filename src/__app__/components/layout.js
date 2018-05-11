@@ -14,16 +14,12 @@ export default function Layout(props) {
       <Helmet
         titleTemplate="%s"
         defaultTitle="..."
-        meta={[
-          { name: 'description', content: '...' },
-        ]}
+        meta={[{ name: 'description', content: '...' }]}
       />
       <Title id={props.title} />
 
       {/*<Header />*/}
-      <ErrorBoundary>
-        {React.Children.toArray(props.children)}
-      </ErrorBoundary>
+      <ErrorBoundary>{React.Children.toArray(props.children)}</ErrorBoundary>
       {/*<Footer />*/}
     </div>
   );

@@ -17,9 +17,10 @@ export default function checkStore(store) {
     injectedSagas: isObject,
   };
 
+  // eslint-disable-next-line no-console
   console.error(store);
   invariant(
     conformsTo(store, shape),
-    '(common/injectors...) injectors: Expected a valid redux store'
+    '(common/injectors...) injectors: Expected a valid redux store',
   );
 }

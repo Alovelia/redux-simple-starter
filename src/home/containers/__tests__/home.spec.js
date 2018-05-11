@@ -1,6 +1,7 @@
 import React from 'react';
-import { shallowWithIntl } from 'enzyme-react-intl';
-import HomeConnected, { HomeContainer } from '../home';
+// import { shallowWithIntl } from 'enzyme-react-intl';
+// import HomeConnected, { HomeContainer } from '../home';
+import { HomeContainer } from '../home';
 
 describe('<HomeContainer />', () => {
   let wrapper;

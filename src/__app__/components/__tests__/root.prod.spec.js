@@ -7,9 +7,9 @@ describe('<Root />', () => {
   const props = {
     history: {},
     rootRoute: [],
-    store: createMockStore()
+    store: createMockStore(),
   };
-  test('when initializing, the expected output is rendered', () => {
+  it('when initializing, the expected output is rendered', () => {
     expect(shallow(<Root {...props} />)).toMatchSnapshot();
   });
 });

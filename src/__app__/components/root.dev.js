@@ -12,7 +12,7 @@ import Layout from './layout';
 const Root = ({ store, history }) => {
   return (
     <AppContainer warnings={false}>
-      <Provider store={store} >
+      <Provider store={store}>
         <I18nProvider>
           <ConnectedRouter history={history}>
             <Layout>

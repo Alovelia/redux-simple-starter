@@ -6,7 +6,7 @@
 export const DEFAULT_PAGE = 'home';
 
 export const routingConfig = {
-  'home': {
+  home: {
     path: '/',
     name: 'home',
     title: 'home.title',
